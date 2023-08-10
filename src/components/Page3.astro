@@ -3,12 +3,12 @@ import Section from "./Section.astro";
 ---
 
 <Section
-  title="Model Y"
-  subtitle="Concertar una prueba de conducción"
-  color="black"
-  id="model-y"
+  title=""
+  subtitle=""
+  color="white"
+  id="page3"
 >
-  <div slot="footer" class="gap-x-6 flex mx-auto">
+  <!-- <div slot="footer" class="gap-x-6 flex mx-auto">
     <a
       class="border-[3px] border-gray-600 bg-gray-600 text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors hover:border-gray-500 hover:bg-gray-500"
       href="#"
@@ -21,14 +21,14 @@ import Section from "./Section.astro";
     >
       Pedido personalizado</a
     >
-  </div>
+  </div> -->
 
   <img
     slot="background"
-    alt="Model Y"
-    class="h-full w-full object-cover object-center bg-image"
-    src="model-y.avif"
-    id="bg-image-modely"
+    alt="Model 3"
+    class="h-full w-full object-cover object-center"
+    src="bg-4.webp"
+    id="bg-image-model3"
   />
 </Section>
 
@@ -44,11 +44,11 @@ import Section from "./Section.astro";
     }
   }
 
-  var imageElement = document.querySelector("#bg-image-modely") as HTMLImageElement;
+  var imageElement = document.querySelector("#bg-image-model3") as HTMLImageElement;
 
   if (isEdge()) {
-    imageElement.src = "model-y.webp";
+    imageElement.src = "bg-4.webp";
   } else {
-    imageElement.src = "model-y.avif";
+    imageElement.src = "bg-4.webp";
   }
 </script>

@@ -3,32 +3,33 @@ import Section from "./Section.astro";
 ---
 
 <Section
-  title="Model 3"
-  subtitle="Concertar una prueba de conducción"
-  color="black"
-  id="model-3"
+  title="The end"
+  subtitle=""
+  color="white"
+  id="page4"
+  showFooterContent="true"
 >
   <div slot="footer" class="gap-x-6 flex mx-auto">
     <a
-      class="border-[3px] border-gray-600 bg-gray-600 text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors hover:border-gray-500 hover:bg-gray-500"
+      class="border-[3px] border-white bg-black text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors duration-300 hover:border-gray-800 hover:bg-gray-800"
       href="#"
     >
-      Explorar inventario</a
+      back to the beginning</a
     >
-    <a
+    <!-- <a
       class="bg-white text-sm rounded font-medium px-12 py-2 transition-colors hover:bg-black hover:text-white inline-flex justify-center items-center text-black"
       href="#"
     >
-      Pedido personalizado</a
-    >
+      Saber más</a
+    > -->
   </div>
 
   <img
     slot="background"
-    alt="Model 3"
+    alt="Accesorios"
     class="h-full w-full object-cover object-center"
-    src="model-3.avif"
-    id="bg-image-model3"
+    src="bg-5.webp"
+    id="bg-image-accessories"
   />
 </Section>
 
@@ -44,11 +45,11 @@ import Section from "./Section.astro";
     }
   }
 
-  var imageElement = document.querySelector("#bg-image-model3") as HTMLImageElement;
+  var imageElement = document.querySelector("#bg-image-accessories") as HTMLImageElement;
 
   if (isEdge()) {
-    imageElement.src = "model-3.webp";
+    imageElement.src = "bg-5.webp";
   } else {
-    imageElement.src = "model-3.avif";
+    imageElement.src = "bg-5.webp";
   }
 </script>
