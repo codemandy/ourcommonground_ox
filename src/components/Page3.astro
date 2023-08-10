@@ -6,7 +6,7 @@ import Section from "./Section.astro";
   title=""
   subtitle=""
   color="white"
-  id="model-y"
+  id="page3"
 >
   <!-- <div slot="footer" class="gap-x-6 flex mx-auto">
     <a
@@ -25,10 +25,10 @@ import Section from "./Section.astro";
 
   <img
     slot="background"
-    alt="Model Y"
-    class="h-full w-full object-cover object-center bg-image"
-    src="bg-3.webp"
-    id="bg-image-modely"
+    alt="Model 3"
+    class="h-full w-full object-cover object-center"
+    src="bg-4.webp"
+    id="bg-image-model3"
   />
 </Section>
 
@@ -44,11 +44,11 @@ import Section from "./Section.astro";
     }
   }
 
-  var imageElement = document.querySelector("#bg-image-modely") as HTMLImageElement;
+  var imageElement = document.querySelector("#bg-image-model3") as HTMLImageElement;
 
   if (isEdge()) {
-    imageElement.src = "bg-3.webp";
+    imageElement.src = "bg-4.webp";
   } else {
-    imageElement.src = "bg-3.webp";
+    imageElement.src = "bg-4.webp";
   }
 </script>
