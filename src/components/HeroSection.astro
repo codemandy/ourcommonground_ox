@@ -1,17 +1,72 @@
 ---
-import Section from "./Section.astro"
+import Section from "./Section-landing.astro"
 ---
 
-<Section
-  title="OUR COMMOND GROUND"
-  subtitle="Sommaren 2021 arbetade CKC med en grupp unga praktikanter från Malmö, och upptäckte verktyg tillsammans för att utttrycka sig genom performancekonst."
-  color="white"
->
-    <img
-    slot="background"
-    alt="Accesorios"
-    class="h-full w-full object-cover object-center"
-    src="bg-2.webp"
-  
-  />
+<Section>
+  <h2 slot="maintitle" class="main-title">
+    <span class="animate-me" data-scroll data-scroll-speed="1">Sommaren</span>
+    <span data-scroll data-scroll-speed="2">2021</span>
+    <span data-scroll data-scroll-speed="3">arbetade</span>
+    <span>CKC</span>
+    <span>med</span>
+    <span>en</span>
+    <span>grupp</span>
+    <span>unga</span>
+    <span>praktikanter</span>
+    <span>från</span>
+    <span>Malmö,</span>
+    <span>och</span>
+    <span>upptäckte</span>
+    <span>verktyg</span>
+    <span>tillsammans</span>
+    <span>för</span>
+    <span>att</span>
+    <span>utttrycka</span>
+    <span>sig</span>
+    <span>genom</span>
+    <span>performancekonst.</span>
+  </h2>
 </Section>
+
+
+
+<style>
+  .main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    color: rgb(197, 23, 23);
+    margin-right: 20%;
+    margin-left: 20%;
+  }
+
+  .main-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(1rem); /* You can adjust this value */
+    transition: all 0.4s ease;
+}
+
+.main-title span.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-scroll-section] {
+  height: 100vh;
+}
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let chars = document.querySelectorAll('.main-title span');
+    chars.forEach((char, index) => {
+        setTimeout(() => {
+            char.classList.add('animated');
+        }, index * 100);  // Adjust the delay time (100ms) as needed
+    });
+});
+
+</script>

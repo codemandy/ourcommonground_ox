@@ -10,40 +10,19 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Our Common Ground">
   <LandingHeader />
 
-  <main
-    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth data-scroll-container"
+  <main data-scroll-container
+    class="relative w-full h-screen overflow-y-auto overflow-x-hidden "
   >
-    <div class="snap-center">
-      <HeroSection />
-    </div>
-    <div class="snap-center">
-      <Page2 />
-    </div>
-    <div class="snap-center">
-      <Page3 />
-    </div>
-    <div class="snap-center">
-      <Page4 />
-    </div>
-  </main>
-
-  <script>
-    import LocomotiveScroll from 'locomotive-scroll';
-
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true
-});
-
-import { gsap } from 'gsap';
-
-// Calculate total height of content
-const totalHeight = document.body.scrollHeight - window.innerHeight;
-
-scroll.on('scroll', (instance) => {
-    const progress = (instance.scroll.y / totalHeight) * 100;
-    gsap.to('.timeline__bar', { width: `${progress}%`, duration: 0.3 });
-});
-
-  </script>
+  <div data-scroll-section>
+    <HeroSection />
+  </div>
+  <div data-scroll-section>
+    <Page2 />
+  </div>
+  <div data-scroll-section>
+    <Page3 />
+  </div>
+  <div data-scroll-section>
+    <Page4 />
+  </div>
 </Layout>
