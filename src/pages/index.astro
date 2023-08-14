@@ -7,11 +7,11 @@ import Page4 from "../components/Page4.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Tesla - El coche de tus sueños (y de Elon Musk)">
+<Layout title="Our Common Ground">
   <LandingHeader />
 
   <main
-    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth data-scroll-container"
   >
     <div class="snap-center">
       <HeroSection />
@@ -26,4 +26,24 @@ import Layout from "../layouts/Layout.astro";
       <Page4 />
     </div>
   </main>
+
+  <script>
+    import LocomotiveScroll from 'locomotive-scroll';
+
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true
+});
+
+import { gsap } from 'gsap';
+
+// Calculate total height of content
+const totalHeight = document.body.scrollHeight - window.innerHeight;
+
+scroll.on('scroll', (instance) => {
+    const progress = (instance.scroll.y / totalHeight) * 100;
+    gsap.to('.timeline__bar', { width: `${progress}%`, duration: 0.3 });
+});
+
+  </script>
 </Layout>
