@@ -22,6 +22,9 @@ import FooterMenu from './FooterMenu.astro';
     </header>
 
     <slot name="content"></slot>
+    <div class="dots-container">
+      <slot name="dots"></slot> <!-- New slot for dots -->
+    </div>
 
     <footer class="flex flex-col justify-end pb-20">
       <slot name="footer" />

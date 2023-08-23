@@ -6,6 +6,12 @@ import Section from "./Section-landing.astro"
   <h2 slot="maintitle" class="main-title">
     <span class="title-span">Our</span> <span class="title-span">Common</span> <span class="title-span">Ground</span> <span class="title-span">is</span> <span class="title-span">a</span> <span class="title-span">collage</span> <span class="title-span">in</span> <span class="title-span">the</span> <span class="title-span">same</span> <span class="title-span">way</span> <span class="title-span">that</span> <span class="title-span">each</span> <span class="title-span">of</span> <span class="title-span">us</span> <span class="title-span">is</span> <span class="title-span">a</span> <span class="title-span">composite</span> <span class="title-span">of</span> <span class="title-span">the</span> <span class="title-span">different</span> <span class="title-span">experiences,</span> <span class="title-span">histories</span> <span class="title-span">and</span> <span class="title-span">ideas</span> <span class="title-span">that</span> <span class="title-span">shaped</span> <span class="title-span">us</span> <span class="title-span">in</span> <span class="title-span">our</span> <span class="title-span">youths.</span> <span class="title-span">So,</span> <span class="title-span">too,</span> <span class="title-span">with</span> <span class="title-span">the</span> <span class="title-span">communities</span> <span class="title-span">we</span> <span class="title-span">come</span> <span class="title-span">from</span> <span class="title-span">and</span> <span class="title-span">the</span> <span class="title-span">systems</span> <span class="title-span">we</span> <span class="title-span">build:</span> <span class="title-span">they</span> <span class="title-span">are</span> <span class="title-span">complex.</span>
   </h2>
+  <div slot="dots" class="dots-container">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  
 </Section>
 
 
@@ -19,7 +25,8 @@ import Section from "./Section-landing.astro"
     color: rgb(255, 255, 255);
     margin-right: 20%;
     margin-left: 20%;
-    text-align: left;
+    position: relative; 
+    text-align: left; 
 }
 
 .title-span {
@@ -27,4 +34,17 @@ import Section from "./Section-landing.astro"
     vertical-align: top;
     opacity: 0;
 }
+
+.dots-container {
+  position: absolute; /* Takes dots out of the document flow */
+  left: 50%; /* Center the dots horizontally */
+  transform: translateX(-50%); /* Fine-tune horizontal centering */
+  top: 100%; /* Position dots immediately below the title */
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+}
+
+
+
 </style>

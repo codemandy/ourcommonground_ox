@@ -7,48 +7,83 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function() {
   
-    // Initialize LocomotiveScroll
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true,
-      lerp: 0.05,  // Adjust this value to make the scroll slower or faster. For example, 0.03 will be slower than 0.05.
-      snap: {
-          snapTo: 'center', // This will make it snap to the center of the closest section
-          duration: 0.6,    // Duration of the snap animation (in seconds)
-          offset: 0.2        // Start snapping when the next section is 20% into the viewport
+  // Initialize LocomotiveScroll
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true,
+    lerp: 0.05,
+    snap: {
+      snapTo: 'center',
+      duration: 0.6,
+      offset: 0.2
+    }
+  });
 
-      }
+  // Update the scroll proxy to work with LocomotiveScroll
+  ScrollTrigger.scrollerProxy(document.querySelector('[data-scroll-container]'), {
+    scrollTop(value) {
+      return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+  });
+
+  // Refresh the ScrollTrigger after LocomotiveScroll updates
+  scroll.on('scroll', ScrollTrigger.update);
+
+  // Refresh ScrollTrigger when needed
+  ScrollTrigger.addEventListener('refresh', () => scroll.update());
+  ScrollTrigger.refresh();
+  
+  // Delay the animation using setTimeout or other mechanisms to ensure .dot is available
+  setTimeout(() => {
+    // Animate title
+    gsap.to('.title-span', {
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      onComplete: animateDots
     });
+    
+    // Function to animate dots
+    function animateDots() {
+      gsap.to('.dot', {
+        opacity: 1, // Animate to fully visible
+        duration: 0.3,
+        stagger: 0.2
+      });
+    }
 
-    ScrollTrigger.scrollerProxy(document.body, {
-        scrollTop(value) {
-            return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-        },
-        pinType: document.querySelector('[data-scroll-container]').style.transform ? "transform" : "fixed"
-    });
+  }, 1000); // Adjust the delay as needed
 
-    // GSAP Animation without ScrollTrigger
-    gsap.to('.main-title span', {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        delay: 1  // Delay of 1 second for the animation to start
-    });
+ // Function to animate dots on scroll
+function animateDotsOnScroll() {
+  ScrollTrigger.create({
+    trigger: '.dots-container',
+    start: 'top center', // Adjust as needed
+    onEnter: () => {
+      gsap.to('.dot:nth-child(1)', { x: '-100%', duration: 1 }); // Move left and out of view
+      gsap.to('.dot:nth-child(2)', { x: '100%', duration: 1 });  // Move right and out of view
+      gsap.to('.dot:nth-child(3)', { y: '100%', duration: 1, onComplete: lockToText }); // Move down to the next section
+    }
+  });
+}
 
-     // Add ScrollTrigger markers for each section
-     const sections = document.querySelectorAll('[data-scroll-section]');
-     sections.forEach((section) => {
-         ScrollTrigger.create({
-             trigger: section,
-             start: 'top',
-             end: 'bottom',
-             markers: true,
-         });
-     });
+// Function to lock the third dot under a new text
+function lockToText() {
+  // Identify the new text element and position, you may need to adjust this
+  const newTextElement = document.querySelector('.new-text');
+  const position = newTextElement.getBoundingClientRect();
 
-    ScrollTrigger.addEventListener('refresh', () => scroll.update());
-    ScrollTrigger.refresh();
+  // Position the third dot under the new text
+  gsap.to('.dot:nth-child(3)', {
+    x: position.left,
+    y: position.top + newTextElement.offsetHeight + 10, // 10px spacing
+    duration: 1
+  });
+}
+
+// Call the function to set up the scroll animation
+animateDotsOnScroll();
 });
