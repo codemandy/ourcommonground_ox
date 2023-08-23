@@ -4,6 +4,7 @@ import LandingHeader from "../components/LandingHeader.astro";
 import Page3 from "../components/Page3.astro";
 import Page2 from "../components/Page2.astro";
 import Page4 from "../components/Page4.astro";
+import Page5 from "../components/Page5.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -11,18 +12,21 @@ import Layout from "../layouts/Layout.astro";
   <LandingHeader />
 
   <main data-scroll-container
-    class="relative w-full h-screen overflow-y-auto overflow-x-hidden "
+    class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory"
   >
-  <div data-scroll-section>
+  <div data-scroll-section class="snap-center">
     <HeroSection />
   </div>
-  <div data-scroll-section>
+  <div data-scroll-section class="snap-center">
     <Page2 />
   </div>
-  <div data-scroll-section>
+  <div data-scroll-section class="snap-center">
     <Page3 />
   </div>
-  <div data-scroll-section>
+  <div data-scroll-section class="snap-center">
     <Page4 />
+  </div>
+  <div data-scroll-section class="snap-center">
+    <Page5 />
   </div>
 </Layout>

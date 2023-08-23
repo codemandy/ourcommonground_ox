@@ -2,57 +2,53 @@ import LocomotiveScroll from 'locomotive-scroll';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("DOMContentLoaded fired");  // Check if DOMContentLoaded event is being fired
+  
+    // Initialize LocomotiveScroll
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector('[data-scroll-container]'),
+      smooth: true,
+      lerp: 0.05,  // Adjust this value to make the scroll slower or faster. For example, 0.03 will be slower than 0.05.
+      snap: {
+          snapTo: 'center', // This will make it snap to the center of the closest section
+          duration: 0.6,    // Duration of the snap animation (in seconds)
+          offset: 0.2        // Start snapping when the next section is 20% into the viewport
 
-  const scrollContainer = document.querySelector('[data-scroll-container]');
-  console.log("Scroll Container:", scrollContainer);  // Check if the scroll container is being selected correctly
-
-  const scroll = new LocomotiveScroll({
-    el: scrollContainer,
-    smooth: true,
-    getSpeed: true,
-    getDirection: true
-  });
-
-  scroll.on('scroll', () => {
-    console.log("Scrolling...");  // Check if the LocomotiveScroll instance is scrolling
-    ScrollTrigger.update();
-  });
-
-  ScrollTrigger.scrollerProxy('[data-scroll-container]', {
-    scrollTop(value) {
-      return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    }
-  });
-
-  // GSAP animations
-  const animateElements = gsap.utils.toArray("[data-scroll-section] .animate-me");
-  console.log("Animate Elements:", animateElements);  // Check if the elements to be animated are being selected correctly
-
-  animateElements.forEach(el => {
-    gsap.from(el, {
-      y: 50,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: el,
-        start: "top center",
-        end: "bottom center",
-        scrub: true
       }
     });
-  });
 
-  // Refresh ScrollTrigger when necessary
-  ScrollTrigger.addEventListener("refresh", () => {
-    console.log("ScrollTrigger refreshed");  // Check if ScrollTrigger is being refreshed
-    scroll.update();
-  });
+    ScrollTrigger.scrollerProxy(document.body, {
+        scrollTop(value) {
+            return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        },
+        pinType: document.querySelector('[data-scroll-container]').style.transform ? "transform" : "fixed"
+    });
 
-  ScrollTrigger.refresh();
+    // GSAP Animation without ScrollTrigger
+    gsap.to('.main-title span', {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        delay: 1  // Delay of 1 second for the animation to start
+    });
+
+     // Add ScrollTrigger markers for each section
+     const sections = document.querySelectorAll('[data-scroll-section]');
+     sections.forEach((section) => {
+         ScrollTrigger.create({
+             trigger: section,
+             start: 'top',
+             end: 'bottom',
+             markers: true,
+         });
+     });
+
+    ScrollTrigger.addEventListener('refresh', () => scroll.update());
+    ScrollTrigger.refresh();
 });

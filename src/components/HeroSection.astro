@@ -4,69 +4,27 @@ import Section from "./Section-landing.astro"
 
 <Section>
   <h2 slot="maintitle" class="main-title">
-    <span class="animate-me" data-scroll data-scroll-speed="1">Sommaren</span>
-    <span data-scroll data-scroll-speed="2">2021</span>
-    <span data-scroll data-scroll-speed="3">arbetade</span>
-    <span>CKC</span>
-    <span>med</span>
-    <span>en</span>
-    <span>grupp</span>
-    <span>unga</span>
-    <span>praktikanter</span>
-    <span>från</span>
-    <span>Malmö,</span>
-    <span>och</span>
-    <span>upptäckte</span>
-    <span>verktyg</span>
-    <span>tillsammans</span>
-    <span>för</span>
-    <span>att</span>
-    <span>utttrycka</span>
-    <span>sig</span>
-    <span>genom</span>
-    <span>performancekonst.</span>
+    <span class="title-span">Our</span> <span class="title-span">Common</span> <span class="title-span">Ground</span> <span class="title-span">is</span> <span class="title-span">a</span> <span class="title-span">collage</span> <span class="title-span">in</span> <span class="title-span">the</span> <span class="title-span">same</span> <span class="title-span">way</span> <span class="title-span">that</span> <span class="title-span">each</span> <span class="title-span">of</span> <span class="title-span">us</span> <span class="title-span">is</span> <span class="title-span">a</span> <span class="title-span">composite</span> <span class="title-span">of</span> <span class="title-span">the</span> <span class="title-span">different</span> <span class="title-span">experiences,</span> <span class="title-span">histories</span> <span class="title-span">and</span> <span class="title-span">ideas</span> <span class="title-span">that</span> <span class="title-span">shaped</span> <span class="title-span">us</span> <span class="title-span">in</span> <span class="title-span">our</span> <span class="title-span">youths.</span> <span class="title-span">So,</span> <span class="title-span">too,</span> <span class="title-span">with</span> <span class="title-span">the</span> <span class="title-span">communities</span> <span class="title-span">we</span> <span class="title-span">come</span> <span class="title-span">from</span> <span class="title-span">and</span> <span class="title-span">the</span> <span class="title-span">systems</span> <span class="title-span">we</span> <span class="title-span">build:</span> <span class="title-span">they</span> <span class="title-span">are</span> <span class="title-span">complex.</span>
   </h2>
 </Section>
 
 
 
 <style>
-  .main-title {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: center;
-    color: rgb(197, 23, 23);
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgb(255, 255, 255);
     margin-right: 20%;
     margin-left: 20%;
-  }
+    text-align: left;
+}
 
-  .main-title span {
+.title-span {
     display: inline-block;
+    vertical-align: top;
     opacity: 0;
-    transform: translateY(1rem); /* You can adjust this value */
-    transition: all 0.4s ease;
 }
-
-.main-title span.animated {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-[data-scroll-section] {
-  height: 100vh;
-}
-
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    let chars = document.querySelectorAll('.main-title span');
-    chars.forEach((char, index) => {
-        setTimeout(() => {
-            char.classList.add('animated');
-        }, index * 100);  // Adjust the delay time (100ms) as needed
-    });
-});
-
-</script>
