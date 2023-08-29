@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.1.2",
+    "@dogstudio/highway": "^2.2.1",
     "@studio-freight/lenis": "^1.0.19",
     "astro": "^2.4.5",
     "curtainsjs": "^8.1.5",

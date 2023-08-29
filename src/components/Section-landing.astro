@@ -1,39 +1,22 @@
 ---
-const { color, title, subtitle, id, showFooterContent } = Astro.props;
-const textColor = `text-${color}`;
+const { color, id, showFooterContent } = Astro.props;
+const textColor = color ? `text-${color}` : 'text-white';  // Fallback to white text
 import FooterMenu from './FooterMenu.astro';
 ---
 
-<section
-  class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center"
-  data-header-color={color}
-  id={id}
-  
->
+<section class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center herosection" data-header-color={color} id={id}>
   <div class="z-30 relative">
     <header>
-      <slot name="maintitle"></slot>
-      <h2 class={`${textColor} text-[40px] font-medium`}>
-        {title}
-      </h2>
-      <p class={`${textColor} text-sm`}>
-        {subtitle}
-      </p>
+      <slot name="counter-slot"></slot>
     </header>
-
     <slot name="content"></slot>
     <div class="dots-container">
-      <slot name="dots"></slot> <!-- New slot for dots -->
+      <slot name="dots"></slot>
     </div>
 
     <footer class="flex flex-col justify-end pb-20">
       <slot name="footer" />
-      <!-- Conditionally load footer: -->
       {showFooterContent && <FooterMenu />}
     </footer>
-  </div>
-
-  <div class="absolute top-0 bottom-0 h-full w-full z-10">
-    <slot name="background" />
   </div>
 </section>
