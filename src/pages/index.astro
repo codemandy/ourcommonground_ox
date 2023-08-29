@@ -1,34 +1,51 @@
 ---
 import HeroSection from "../components/HeroSection.astro";
 import LandingHeader from "../components/LandingHeader.astro";
-import Page3 from "../components/Page3.astro";
 import Page2 from "../components/Page2.astro";
+import Page3 from "../components/Page3.astro";
 import Page4 from "../components/Page4.astro";
 import Page5 from "../components/Page5.astro";
 import Layout from "../layouts/Layout.astro";
 import "../css/global.css";
-
 ---
 
 <Layout title="Our Common Ground">
   <LandingHeader />
+  <script>
+    function sectionObserver() {
+      return {
+        init() {
+          const sections = document.querySelectorAll('[x-ref]');
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                console.log(`${entry.target.getAttribute('x-ref')} is in view`);
+              }
+            });
+          });
 
-  <main data-scroll-container
-    class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory"
-  >
-  <div data-scroll-section class="snap-center">
-    <HeroSection />
-  </div>
-  <div data-scroll-section class="snap-center">
-    <Page2 />
-  </div>
-  <div data-scroll-section class="snap-center">
-    <Page3 />
-  </div>
-  <div data-scroll-section class="snap-center">
-    <Page4 />
-  </div>
-  <div data-scroll-section class="snap-center">
-    <Page5 />
-  </div>
+          sections.forEach(section => {
+            observer.observe(section);
+          });
+        }
+      };
+    }
+  </script>
+  <main x-data="sectionObserver()" x-init="init()" data-scroll-container class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory">
+    <div x-data="{ inView: false }" x-intersect="inView = true; startTitleAnimation()" x-intersect-leave="inView = false; stopTitleAnimation()" class="hero-section">
+      <HeroSection />
+    </div>
+    <div x-data="{ inView: false }" x-ref="page2" x-intersect.half="inView = true" x-transition>
+      <Page2 />
+    </div>
+    <div x-data="{ inView: false }" x-ref="page3" x-intersect.half="inView = true" x-transition>
+      <Page3 />
+    </div>
+    <div x-data="{ inView: false }" x-ref="page4" x-intersect.half="inView = true" x-transition>
+      <Page4 />
+    </div>
+    <div x-data="{ inView: false }" x-ref="page5" x-intersect.half="inView = true" x-transition>
+      <Page5 />
+    </div>    
+  </main>
 </Layout>
