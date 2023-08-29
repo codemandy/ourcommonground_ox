@@ -30,12 +30,40 @@ import "../css/global.css";
         }
       };
     }
+
+    function counting() {
+      return {
+        currentValue: 0,
+        endValue: 100,
+        init() {
+          // your counting logic here
+        },
+        toggleCounting() {
+          // toggle logic
+        },
+        resetCounter() {
+          // reset counter logic
+        }
+      };
+    }
+
+    window.startTitleAnimation = function() {
+      console.log('startTitleAnimation called');
+    };
+    window.startCounterAnimation = function() {
+      console.log('startCounterAnimation called');
+    };
+    window.stopTitleAnimation = function() {
+      console.log('stopTitleAnimation called');
+    };
   </script>
   <main x-data="sectionObserver()" x-init="init()" data-scroll-container class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory">
     <div x-data="{ inView: false }" x-intersect="inView = true; startTitleAnimation()" x-intersect-leave="inView = false; stopTitleAnimation()" class="hero-section">
       <HeroSection />
     </div>
-    <div x-data="{ inView: false }" x-ref="page2" x-intersect.half="inView = true" x-transition>
+    <div x-data="counting()" x-init="init()" @click="toggleCounting()" class="counter-section">
+      <span x-text="currentValue" x-ref="counter"></span>
+      <span x-show="currentValue==endValue" @click="resetCounter">Reset</span>
       <Page2 />
     </div>
     <div x-data="{ inView: false }" x-ref="page3" x-intersect.half="inView = true" x-transition>

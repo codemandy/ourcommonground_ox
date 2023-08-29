@@ -1,0 +1,59 @@
+<!-- Counter.astro -->
+---
+---
+<div x-data="counting()" x-init="init()" class="main-title" @click="toggleCounting()">
+  <span x-text="currentValue" x-ref="counter" class="counter"></span>
+  <span x-show="currentValue==endValue" class="text-sm text-white font-bold" @click="resetCounter">Reset</span>
+</div>
+
+<style>
+  .main-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgb(255, 255, 255);
+    margin-right: 20%;
+    margin-left: 20%;
+    position: relative;
+    text-align: left;
+  }
+  .title-span {
+    display: inline-block;
+    vertical-align: top;
+    opacity: 0;
+  }
+</style>
+
+<script>
+import gsap from "gsap";
+
+function counting() {
+  return {
+    init() {
+      this.currentValue = this.startValue;
+      gsap.set(this.$refs.counter, { opacity: 0 });
+    },
+    started: false,
+    startValue: 1983,
+    currentValue: 1983,
+    endValue: new Date().getFullYear(),
+    toggleCounting() {
+      if (!this.started) {
+        this.started = true;
+        gsap.to(this, {
+          currentValue: this.endValue,
+          duration: 5,
+          roundProps: "currentValue",
+          onUpdate: () => {
+            this.$refs.counter.innerText = this.currentValue;
+          }
+        });
+      }
+    },
+    resetCounter() {
+      this.started = false;
+      this.currentValue = this.startValue;
+    }
+  };
+}
+</script>
