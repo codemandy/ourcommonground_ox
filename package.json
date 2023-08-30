@@ -4,8 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "debug": "astro dev --debug",
     "start": "astro dev",
     "build": "astro build",
+    "build:debug": "astro build --debug",
     "preview": "astro preview",
     "astro": "astro"
   },
