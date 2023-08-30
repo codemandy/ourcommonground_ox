@@ -3,47 +3,30 @@ import HeroSection from "../components/HeroSection.astro";
 import LandingHeader from "../components/LandingHeader.astro";
 import Page3 from "../components/Page3.astro";
 import Page2 from "../components/Page2.astro";
-import Page4 from "../components/Page4.astro";
+import Page4 from "../components/PageFour.astro";
+import Page5 from "../components/Page5.astro";
 import Layout from "../layouts/Layout.astro";
+import "../css/global.css";
+import PageFour from "../components/PageFour.astro";
 ---
 
 <Layout title="Our Common Ground">
   <LandingHeader />
-
-  <main
-    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth data-scroll-container"
-  >
-    <div class="snap-center">
-      <HeroSection />
+  <main data-router-wrapper>
+    <div data-router-view="herosection">
+      <HeroSection id="herosection" />
     </div>
-    <div class="snap-center">
-      <Page2 />
+    <div data-router-view="page2">
+      <Page2 id="page2" />
     </div>
-    <div class="snap-center">
-      <Page3 />
+    <div data-router-view="page3">
+      <Page3 id="page3" />
     </div>
-    <div class="snap-center">
-      <Page4 />
+    <div data-router-view="PageFour">
+      <PageFour id="PageFour" />
+    </div>
+    <div data-router-view="page5">
+      <Page5 id="page5" />
     </div>
   </main>
-
-  <script>
-    import LocomotiveScroll from 'locomotive-scroll';
-
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true
-});
-
-import { gsap } from 'gsap';
-
-// Calculate total height of content
-const totalHeight = document.body.scrollHeight - window.innerHeight;
-
-scroll.on('scroll', (instance) => {
-    const progress = (instance.scroll.y / totalHeight) * 100;
-    gsap.to('.timeline__bar', { width: `${progress}%`, duration: 0.3 });
-});
-
-  </script>
 </Layout>
