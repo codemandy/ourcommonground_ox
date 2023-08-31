@@ -1,3 +1,10 @@
-[data-scroll-section] {
-  min-height: 100vh;
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+[data-router-view] {
+  scroll-snap-align: start;
+  height: 100vh;
 }
