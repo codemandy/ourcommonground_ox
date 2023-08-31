@@ -8,13 +8,21 @@ import Section from "./SectionImages.astro";
   color="white"
   id="page5"
 >
-  <img src="Glasses2.png" slot="images" class=" img-grid" />
-  <img src="Handfree Pouch.png" slot="images" class=" img-grid" />
-  <img src="Paper Clips.png" slot="images" class=" img-grid" />
+  <img src="Glasses2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <img src="HandfreePouch.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <img src="PaperClips.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <img src="Notebook-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <img src="Colacan.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <img src="Watch-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
 </Section>
 
 <style>
-  .img-grid {
-    width: 50%;
+  .img-small {
+    width: 10%;
+    transition: width 0.9s ease;
+  }
+  .img-large {
+    width: 40%;
+    transition: width 0.9s ease;
   }
 </style>

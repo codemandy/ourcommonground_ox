@@ -2,6 +2,7 @@
 const { color, title, subtitle, id, showFooterContent } = Astro.props;
 const textColor = `text-${color}`;
 ---
+
 <section
   x-data="{ inView: false }"
   x-init="() => {
@@ -19,19 +20,16 @@ const textColor = `text-${color}`;
 >
   <div class="z-30 relative h-full flex flex-col">
     <header>
-      <slot name="maintitle"></slot>
-      <h2 class={`${textColor} pt-40 text-[40px] font-medium`}>
-        {title}
-      </h2>
-      <p class={`${textColor} text-sm`}>
-        {subtitle}
-      </p>
+      <h2 class={`${textColor} pt-40 text-[40px] font-medium`}>{title}</h2>
+      <p class={`${textColor} text-sm`}>{subtitle}</p>
     </header>
-
-    <slot name="images-container"></slot>
+    
     <div 
-      x-bind:class="{ 'grid-cols-3': inView }"
-      class="images-grid grid grid-rows-1 h-full gap-4 transition-all duration-300"
+      x-bind:class="{
+        'grid-cols-3 place-items-center': inView, 
+        'grid-cols-1 place-items-center': !inView
+      }"
+      class="images-grid grid h-full gap-4 transition-all ease-in-out duration-1500"
     >
       <slot name="images"></slot>
     </div>
