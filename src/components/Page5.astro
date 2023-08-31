@@ -1,11 +1,20 @@
 ---
-import Section from "./Section.astro";
+import Section from "./SectionImages.astro";
 ---
 
 <Section
-  title="section 5"
+  title=""
   subtitle=""
   color="white"
   id="page5"
 >
+  <img src="Glasses2.png" slot="images" class=" img-grid" />
+  <img src="Handfree Pouch.png" slot="images" class=" img-grid" />
+  <img src="Paper Clips.png" slot="images" class=" img-grid" />
 </Section>
+
+<style>
+  .img-grid {
+    width: 50%;
+  }
+</style>

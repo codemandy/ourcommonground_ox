@@ -1,0 +1,42 @@
+---
+const { color, title, subtitle, id, showFooterContent } = Astro.props;
+const textColor = `text-${color}`;
+---
+<section
+  x-data="{ inView: false }"
+  x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { inView = true }, 900);
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }"
+  class="bg-black h-screen w-screen text-center overflow-hidden relative"
+  data-header-color={color}
+  id={id}
+>
+  <div class="z-30 relative h-full flex flex-col">
+    <header>
+      <slot name="maintitle"></slot>
+      <h2 class={`${textColor} pt-40 text-[40px] font-medium`}>
+        {title}
+      </h2>
+      <p class={`${textColor} text-sm`}>
+        {subtitle}
+      </p>
+    </header>
+
+    <slot name="images-container"></slot>
+    <div 
+      x-bind:class="{ 'grid-cols-3': inView }"
+      class="images-grid grid grid-rows-1 h-full gap-4 transition-all duration-300"
+    >
+      <slot name="images"></slot>
+    </div>
+
+    <footer class="flex flex-col flex-grow justify-end pb-20">
+    </footer>
+  </div>
+</section>
