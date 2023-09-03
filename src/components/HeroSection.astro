@@ -3,20 +3,53 @@ import ParticlesComponent from "./ParticlesComponent.astro";
 import Section from "./Section-landing.astro"
 ---
 
-<Section>
+<Section id="herosection" color="white">
   <ParticlesComponent slot="particles"/>
-  <div class="herosection">
+  <div x-data="{ 
+        text: '', 
+        textArray: ['Our', 'Common', 'Ground'], 
+        textIndex: 0, 
+        charIndex: 0, 
+        typeSpeed: 700 
+      }"
+       x-init="setInterval(function(){ 
+                  $data.text = $data.textArray[$data.textIndex]; 
+                  $data.textIndex = ($data.textIndex + 1) % $data.textArray.length; 
+                }, $data.typeSpeed);"
+       id="text-container"
+       class="text-container mx-auto text-center"
+       slot="animated-text">
+    <h1 id="animated-text" class="main-title" x-text="text"></h1>
   </div>
 </Section>
 
+
 <style>
-  .main-title {
-      font-size: 3rem;
-      font-weight: bold;
-      color: rgb(255, 255, 255);
-      margin-right: 20%;
-      margin-left: 20%;
-      position: relative; 
-      text-align: center; 
+
+  .herosection {
+    position: relative;  /* or you could use absolute depending on your layout needs */
   }
+
+  .main-title {
+  font-size: 7rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+
+
+  .particles-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
 </style>

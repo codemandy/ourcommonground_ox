@@ -1,27 +1,70 @@
----
-import Section from "./Section.astro";
----
+  ---
+  import Section from "./Section.astro";
+  ---
 
-<Section
-  title="Section 2"
-  subtitle=""
-  color="white"
-  id="page2"
+  <section
+  x-data="{ inView: false }"
+  x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }"
+  class="bg-black h-screen w-screen text-center overflow-hidden relative"
 >
+  <div slot="animated-text">
+    <h1 id="animatedtext" class="main-title" x-text="text"></h1>
+    <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
+  </div>
+  <div class="timeline__content" data-end-year="1893" slot="timeline__content">
+    <div class="content">
+      <img x-bind:class="{ 'fade-in': inView }" src="folketshus.png" alt="Description" class="fade-in-image">
+      <p class="content__text">Det byggdes 1893 och var Sveriges första Folkets Hus.
+      </p>
+    </div>
+  </div>
+</section>
 
-<div slot="content" class="text-slate-100">
-  Wooooooow.
-</div>
-<img
-slot="background"
-alt="Model 3"
-class="h-full w-full object-cover object-center"
-src="bg-4.webp"
-id="bg-image-model3"
-/>
+  <style>
+  #page2 {
+    height: 300vh;
+  }
 
-  
-</Section>
+  .content__text {
+    font: 1rem;
+    padding-top: 1rem;
+    color: rgb(255, 255, 255);
+  }
+
+  .main-title {
+    font-size: 7rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    z-index: 51;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .fade-in-image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
 
 
- 
+  .timeline__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16.6666666667vw 2.0833333333vw 0vw;
+    z-index: 1;
+  }
+  </style>
