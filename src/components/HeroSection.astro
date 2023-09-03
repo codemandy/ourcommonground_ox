@@ -16,9 +16,10 @@ import Section from "./Section-landing.astro"
                   $data.text = $data.textArray[$data.textIndex]; 
                   $data.textIndex = ($data.textIndex + 1) % $data.textArray.length; 
                 }, $data.typeSpeed);"
+       id="text-container"
        class="text-container mx-auto text-center"
        slot="animated-text">
-    <h1 class="main-title" x-text="text"></h1>
+    <h1 id="animated-text" class="main-title" x-text="text"></h1>
   </div>
 </Section>
 
@@ -29,16 +30,17 @@ import Section from "./Section-landing.astro"
     position: relative;  /* or you could use absolute depending on your layout needs */
   }
 
-  .text-container {
- 
-}
-
-.main-title {
+  .main-title {
   font-size: 7rem;
   font-weight: bold;
   color: rgb(255, 255, 255);
   z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
 }
+
 
 
   .particles-fullscreen {

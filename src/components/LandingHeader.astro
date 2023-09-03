@@ -2,7 +2,10 @@
 ---
 <header
   id="landing-header"
-  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-20 text-white"
+  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-20 text-white opacity-0 transition-opacity duration-500"
+  x-data="{ isVisible: false }"
+  x-init="setTimeout(() => { isVisible = true }, 2000)"
+  x-bind:class="{ 'opacity-100': isVisible }"
 >
   <div class="flex flex-grow basis-0">
     <a href="#">Our Common Ground</a>
@@ -23,6 +26,19 @@
       <li><a href="#">About</a></li>
     </ul>
   </nav>
-
-
 </header>
+
+<style>
+  .transition-opacity {
+  transition: opacity 0.6s ease-in-out;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+</style>
