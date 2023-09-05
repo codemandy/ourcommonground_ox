@@ -7,21 +7,23 @@ import Section from "./Section-landing.astro"
   <ParticlesComponent slot="particles"/>
   <div x-data="{ 
         text: '', 
-        textArray: ['Our', 'Common', 'Ground'], 
-        textIndex: 0, 
+        fullText: 'Our Common Ground is a collage - in the same way that each of us is a composite of the different experiences, histories and ideas that shaped us in our youths. So, too, with the communities we come from and the systems we build: they are complex.', 
         charIndex: 0, 
-        typeSpeed: 700 
+        typeSpeed: 50 
       }"
        x-init="setInterval(function(){ 
-                  $data.text = $data.textArray[$data.textIndex]; 
-                  $data.textIndex = ($data.textIndex + 1) % $data.textArray.length; 
+                  if($data.charIndex < $data.fullText.length) {
+                    $data.text += $data.fullText.charAt($data.charIndex);
+                    $data.charIndex++;
+                  }
                 }, $data.typeSpeed);"
        id="text-container"
-       class="text-container mx-auto text-center"
+       class="text-container text-left"
        slot="animated-text">
     <h1 id="animated-text" class="main-title" x-text="text"></h1>
   </div>
 </Section>
+
 
 
 <style>
@@ -31,14 +33,18 @@ import Section from "./Section-landing.astro"
   }
 
   .main-title {
-  font-size: 7rem;
-  font-weight: bold;
+  font-size: 1rem;
   color: rgb(255, 255, 255);
   z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -100%);
+}
+
+#animated-text {
+  width: 500px;
+  
 }
 
 

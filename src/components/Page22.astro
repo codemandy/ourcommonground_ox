@@ -18,7 +18,7 @@ class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
   <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
 </div>
 <div class="timeline__content" data-end-year="1953" slot="timeline__content">
-  <div class="content">
+  <div class="content__img">
     <img x-bind:class="{ 'fade-in': inView }" src="frank.jpeg" alt="Description" class="fade-in-image">
     <p class="content__text">On a cold thursday Frank Sinitra sang there
     </p>
@@ -28,40 +28,44 @@ class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
 
 <style>
 
-.content__text {
-  font: 1rem;
-  padding-top: 1rem;
-  color: rgb(255, 255, 255);
-}
-
-.main-title {
-  font-size: 7rem;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  z-index: 51;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.fade-in-image {
-opacity: 0;
-transition: opacity 0.5s ease-in-out;
-}
-
-.fade-in {
-opacity: 1 !important;
-}
-
-
 .timeline__content {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;  /* Add this line */
   min-height: 100vh;
-  padding: 16.6666666667vw 2.0833333333vw 0vw;
   z-index: 1;
 }
-</style>
+
+.content__img {
+  width: 60%;
+}
+
+  .content__text {
+    font: 1rem;
+    padding-top: 1rem;
+    color: rgb(255, 255, 255);
+  }
+
+  .main-title {
+    font-size: 7rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    z-index: 51;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .fade-in-image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+  </style>

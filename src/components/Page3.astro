@@ -2,22 +2,71 @@
 import Section from "./Section.astro";
 ---
 
-<Section
-  title="Section 3"
-  subtitle=""
-  color="white"
-  id="page3"
+<section
+x-data="{ inView: false }"
+x-init="() => {
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+  }, { threshold: 0.1 });
+
+  observer.observe($el);
+}"
+class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
 >
-
-<div slot="content" class="text-slate-100">
+<div slot="animated-text">
+  <h1 id="animatedtext" class="main-title"></h1>
+  <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
 </div>
-<img
-slot="background"
-alt="Model 3"
-class="h-full w-full object-cover object-center"
-src="bg-4.webp"
-id="bg-image-model3"
-/>
+<div class="timeline__content" data-end-year="1953" slot="timeline__content">
+  <div class="content__img">
+    <img x-bind:class="{ 'fade-in': inView }" src="frank.jpeg" alt="Description" class="fade-in-image">
+    <p class="content__text">On a cold thursday Frank Sinitra sang there
+    </p>
+  </div>
+</div>
+</section>
 
+<style>
 
-</Section>
+  .timeline__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  /* Add this line */
+    min-height: 100vh;
+    z-index: 1;
+  }
+  
+  .content__img {
+    width: 60%;
+  }
+  
+    .content__text {
+      font: 1rem;
+      padding-top: 1rem;
+      color: rgb(255, 255, 255);
+    }
+  
+    .main-title {
+      font-size: 7rem;
+      font-weight: bold;
+      color: rgb(255, 255, 255);
+      z-index: 51;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .fade-in-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in {
+    opacity: 1 !important;
+  }
+  
+    </style>
+  
