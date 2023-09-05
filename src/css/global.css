@@ -1,11 +1,10 @@
 main {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  height: 300vh;
-  background-color: black;
+  height: 100vh;  /* Using 100vh instead of auto */
 }
 
 [data-router-view] {
-  scroll-snap-align: start;
-  height: 300vh;
+  height: 100vh;  /* Set a defined height */
+  scroll-snap-align: center;
 }
