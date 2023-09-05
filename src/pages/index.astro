@@ -13,26 +13,26 @@ import Page6 from "../components/Page6.astro";
 
 <Layout title="Our Common Ground">
   <LandingHeader />
-  <main data-router-wrapper>
-    <div data-router-view="herosection">
+  <main data-router-wrapper data-scroll-container>
+    <div data-router-view="herosection" data-scroll-section>
       <HeroSection id="herosection" />
     </div>
-    <div data-router-view="page2">
-      <Page2 id="page2" />
+    <div data-router-view="page2" data-scroll-section data-scroll-target="#page2"
+    ><Page2 id="page2"/>
     </div>
-    <div data-router-view="page22">
+    <div data-router-view="page22" data-scroll-section>
       <Page22 id="page22" />
     </div>
-    <div data-router-view="page3">
+    <div data-router-view="page3" data-scroll-section>
       <Page3 id="page3" />
     </div>
-    <div data-router-view="PageFour">
+    <div data-router-view="PageFour" data-scroll-section>
       <PageFour id="PageFour" />
     </div>
-    <div data-router-view="page5">
+    <div data-router-view="page5" data-scroll-section>
       <Page5 id="page5" />
     </div>
-    <div data-router-view="page6">
+    <div data-router-view="page6" data-scroll-section>
       <Page6 id="page6" />
     </div>
   </main>
