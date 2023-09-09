@@ -40,4 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Second counter from 1893 to 1953
   initCounter('.page2', '.page22', 1893, 1953);
+
+  // Third counter from 1853 to 1970
+  initCounter('.page22', '.page', 1853, 1970);
 });

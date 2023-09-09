@@ -3,70 +3,80 @@ import Section from "./Section.astro";
 ---
 
 <section
-x-data="{ inView: false }"
-x-init="() => {
-  const observer = new IntersectionObserver(([entry]) => {
-    inView = entry.isIntersecting;
-  }, { threshold: 0.1 });
+  x-data="{ inView: false }"
+  x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
 
-  observer.observe($el);
-}"
-class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
+    observer.observe($el);
+  }"
+  class="page2 bg-black h-screen w-screen text-center overflow-hidden relative"
 >
-<div slot="animated-text">
-  <h1 id="animatedtext" class="main-title"></h1>
-  <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
-</div>
-<div class="timeline__content" data-end-year="1953" slot="timeline__content">
-  <div class="content__img">
-    <img x-bind:class="{ 'fade-in': inView }" src="frank.jpeg" alt="Description" class="fade-in-image">
-    <p class="content__text">On a cold thursday Frank Sinitra sang there
+  <div slot="animated-text">
+    <h1 id="animatedtext" class="main-title"></h1>
+    <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
+  </div>
+  <div class="timeline__content" data-end-year="1893" slot="timeline__content">
+    <div class="content">
+      <img x-bind:class="{ 'fade-in': inView }" src="Fredfrihetsocialism.png" alt="Description" class="fade-in-image">
+      <img x-bind:class="{ 'fade-in': inView }" src="social-1.jpg" alt="Description" class="fade-in-image">
+      <img x-bind:class="{ 'fade-in': inView }" src="social-2.webp" alt="Description" class="fade-in-image">
+    </div>
+    <p class="content__text">The town’s young socialists used to meet there.
     </p>
   </div>
-</div>
 </section>
 
 <style>
-
   .timeline__content {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;  /* Add this line */
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh;
     z-index: 1;
   }
-  
-  .content__img {
-    width: 60%;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
   }
-  
-    .content__text {
-      font: 1rem;
-      padding-top: 1rem;
-      color: rgb(255, 255, 255);
-    }
-  
-    .main-title {
-      font-size: 7rem;
-      font-weight: bold;
-      color: rgb(255, 255, 255);
-      z-index: 51;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  
-    .fade-in-image {
+
+  .fade-in-image {
+    width: auto;  /* Changed from 20% to auto */
+    height: 400px; /* Fixed height */
+    object-fit: cover;  /* Keep aspect ratio */
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 3.5s ease-in-out;
+    margin: 0 10px;  /* Add horizontal margins */
+
   }
   
+
   .fade-in {
     opacity: 1 !important;
   }
-  
-    </style>
-  
+
+  .content__text {
+    font-size: 1rem;
+    padding-top: 1rem;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-title {
+    font-size: 7rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    z-index: 51;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
