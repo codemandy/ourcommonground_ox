@@ -4,11 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function () {
-  
-  function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal) {
+
+  function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, scrollerSelector) {
     let cont = { val: startVal };
     const counterElement = document.getElementById("timeline__years");
-    
+
     function updateCounter() {
       counterElement.innerHTML = Math.floor(cont.val);
     }
@@ -21,11 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         end: "center center",
         onLeave: () => {
           counterElement.style.display = "block";
-          gsap.to(cont, {val: endVal, roundProps: "val", onUpdate: updateCounter, ease: "linear", duration: 0.5});
+          gsap.to(cont, { val: endVal, roundProps: "val", onUpdate: updateCounter, ease: "linear", duration: 0.5 });
         },
         onEnterBack: () => { counterElement.style.display = "none"; },
         onEnter: () => { counterElement.style.display = "block"; },
         scrub: 1,
+        markers: true, // Add markers for debugging
         scroller: "[data-router-wrapper]"
       },
       val: endVal,
@@ -33,14 +34,26 @@ document.addEventListener("DOMContentLoaded", function () {
       onUpdate: updateCounter,
       ease: "linear"
     });
+
+    function hideCounterAfter(triggerSelector) {
+      const counterElement = document.getElementById("timeline__years");
+      
+      ScrollTrigger.create({
+        trigger: triggerSelector,
+        start: "bottom bottom", // Trigger when the bottom of the element hits the bottom of the viewport
+        onEnter: () => { counterElement.style.display = "none"; },
+      });
+    }
+    
   }
 
-  // First counter from 1800 to 1893
-  initCounter('.page2', '.page2', 1800, 1893);
+  // First counter with scroller '.page2'
+initCounter('.page2', '.page2', 1800, 1893, '.page2');
 
-  // Second counter from 1893 to 1953
-  initCounter('.page2', '.page22', 1893, 1953);
+// Second counter with scroller '.page22'
+initCounter('.page2', '.page22', 1893, 1953, '.page22');
 
-  // Third counter from 1853 to 1970
-  initCounter('.page22', '.page', 1853, 1970);
+// Third counter with scroller '.page3'
+initCounter('.page22', '.page3', 1853, 1970, '.page3');
+
 });
