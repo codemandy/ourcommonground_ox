@@ -4,35 +4,56 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function () {
-  const counterElement = document.getElementById("timeline__years");
-  counterElement.style.display = "none"; // Initially set to none
-  let cont = { val: 1800 }; // Start year
+
+  function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, counterElementId) {
+    let cont = { val: startVal };
+    const counterElement = document.getElementById(counterElementId);
   
-  let endValue = 2021; // Default end value
-
-  function updateCounter() {
-    counterElement.innerHTML = Math.floor(cont.val);
-  }
-
-  const distance = window.innerHeight * 5;
-
-  gsap.to(cont, {
-    scrollTrigger: {
-      trigger: ".timeline__content",
-      start: "bottom center",
-      onEnter: ({trigger}) => { 
-        counterElement.style.display = "block";
-        endValue = parseInt(trigger.dataset.endYear, 10);
-        gsap.to(cont, {val: endValue, roundProps: "val", onUpdate: updateCounter, ease: "linear"});
+    function updateCounter() {
+      const tolerance = 2; // The range within which to snap to the end value
+      let valToDisplay = Math.floor(cont.val);
+    
+      // If the value is within the tolerance range, snap it to the end value
+      if (Math.abs(valToDisplay - endVal) <= tolerance) {
+        valToDisplay = endVal;
+      }
+    
+      counterElement.innerHTML = valToDisplay;
+    }
+    
+  
+    gsap.to(cont, {
+      val: endVal,
+      roundProps: "val",
+      onUpdate: updateCounter,
+      scrollTrigger: {
+        trigger: triggerSelectorStart,
+        start: "top top",
+        endTrigger: triggerSelectorEnd,
+        end: "bottom bottom",
+        onUpdate: self => {
+          if (self.isActive) {
+            counterElement.style.display = "block";
+          } else {
+            counterElement.style.display = "none";
+          }
+        },
+        onToggle: self => {
+          if (!self.isActive) {
+            cont.val = startVal;  // Reset to startVal when not active
+          }
+        },
+        scrub: true,
+        markers: true,
+        scroller: "[data-router-wrapper]"
       },
-      onLeaveBack: () => { counterElement.style.display = "none"; },
-      end: () => `+=${distance}`,
-      scrub: 1,
-      scroller: "[data-router-wrapper]"
-    },
-    val: endValue,
-    roundProps: "val",
-    onUpdate: updateCounter,
-    ease: "linear"
-  });
+      ease: "linear"
+    });
+  }
+  
+
+  // Initialize counters with the same counterElementId
+  initCounter('.page2', '.page2', 1800, 1893, 'timeline__years');
+  initCounter('.page2', '.page22', 1893, 1953, 'timeline__years');
+  initCounter('.page22', '.page3', 1953, 1970, 'timeline__years');
 });

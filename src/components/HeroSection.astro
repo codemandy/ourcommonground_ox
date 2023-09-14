@@ -1,27 +1,29 @@
 ---
-import ParticlesComponent from "./ParticlesComponent.astro";
 import Section from "./Section-landing.astro"
 ---
 
 <Section id="herosection" color="white">
-  <ParticlesComponent slot="particles"/>
   <div x-data="{ 
         text: '', 
-        textArray: ['Our', 'Common', 'Ground'], 
-        textIndex: 0, 
+        fullText: 'In summer 2021, CKC worked with a group of young interns from Malmö, teaching them how to use the tools of performance to express themselves. <br><br> Our Common Ground is a collage - in the same way that each of us is a composite of the different experiences, histories and ideas that shaped us in our youths. So, too, with the communities we come from and the systems we build: they are complex.', 
         charIndex: 0, 
-        typeSpeed: 700 
+        typeSpeed: 50 
       }"
        x-init="setInterval(function(){ 
-                  $data.text = $data.textArray[$data.textIndex]; 
-                  $data.textIndex = ($data.textIndex + 1) % $data.textArray.length; 
+                  if($data.charIndex < $data.fullText.length) {
+                    $data.text += $data.fullText.charAt($data.charIndex);
+                    $data.charIndex++;
+                  }
+                  document.getElementById('animated-text').innerHTML = $data.text;
                 }, $data.typeSpeed);"
        id="text-container"
-       class="text-container mx-auto text-center"
+       class="text-container text-left"
        slot="animated-text">
-    <h1 id="animated-text" class="main-title" x-text="text"></h1>
+    <h1 id="animated-text" class="main-title"></h1>
   </div>
 </Section>
+
+
 
 
 <style>
@@ -31,25 +33,19 @@ import Section from "./Section-landing.astro"
   }
 
   .main-title {
-  font-size: 7rem;
-  font-weight: bold;
+  font-size: 1rem;
   color: rgb(255, 255, 255);
   z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -75%);
 }
 
+#animated-text {
+  width: 500px;
+  
+}
 
-
-  .particles-fullscreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
 
 </style>

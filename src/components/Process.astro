@@ -1,0 +1,36 @@
+---
+import Section from "./Section.astro"
+import ParticlesComponent from "./ParticlesComponent.astro";
+
+---
+<ParticlesComponent slot="particles" />
+<Section id="process" color="white">
+  <div 
+  slot="animated-text-2">
+    <h1 id="animated-text-2" class="main-title-2">The Process
+    </h1>
+  </div>
+</Section>
+
+
+
+
+<style>
+
+
+  .main-title-2 {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+
+#animated-text-2 {
+  width: 500px;
+  
+}
+
+</style>
