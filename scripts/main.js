@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         onEnterBack: () => { counterElement.style.display = "none"; },
         onEnter: () => { counterElement.style.display = "block"; },
         scrub: 1,
-        markers: true, // Add markers for debugging
+        markers: true,
         scroller: "[data-router-wrapper]"
       },
       val: endVal,
@@ -34,26 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
       onUpdate: updateCounter,
       ease: "linear"
     });
-
-    function hideCounterAfter(triggerSelector) {
-      const counterElement = document.getElementById("timeline__years");
-      
-      ScrollTrigger.create({
-        trigger: triggerSelector,
-        start: "bottom bottom", // Trigger when the bottom of the element hits the bottom of the viewport
-        onEnter: () => { counterElement.style.display = "none"; },
-      });
-    }
-    
   }
 
-  // First counter with scroller '.page2'
-initCounter('.page2', '.page2', 1800, 1893, '.page2');
-
-// Second counter with scroller '.page22'
-initCounter('.page2', '.page22', 1893, 1953, '.page22');
-
-// Third counter with scroller '.page3'
-initCounter('.page22', '.page3', 1853, 1970, '.page3');
+  // Initialize counters
+  initCounter('.page2', '.page2', 1800, 1893, '.page2');
+  initCounter('.page2', '.page22', 1893, 1953, '.page22');
+  initCounter('.page22', '.page3', 1853, 1970, '.page3');
 
 });

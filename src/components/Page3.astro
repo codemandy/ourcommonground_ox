@@ -2,7 +2,7 @@
 import Section from "./Section.astro";
 ---
 
-<section
+<section id="page3"
   x-data="{ inView: false }"
   x-init="() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -11,8 +11,8 @@ import Section from "./Section.astro";
 
     observer.observe($el);
   }"
-  class="page2 bg-black h-screen w-screen text-center overflow-hidden relative"
->
+  class="page3 bg-black h-screen w-screen text-center overflow-hidden relative">
+
   <div slot="animated-text">
     <h1 id="animatedtext" class="main-title"></h1>
     <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
