@@ -2,7 +2,7 @@
 import Section from "./Section.astro";
 ---
 
-<section id="page3"
+<section
   x-data="{ inView: false }"
   x-init="() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -15,9 +15,9 @@ import Section from "./Section.astro";
 
   <div slot="animated-text">
     <h1 id="animatedtext" class="main-title"></h1>
-    <h1 id="timeline__years" class="main-title" client:style="display: block;"></h1>
+    <h1 id="timeline__years" class="main-title"></h1>
   </div>
-  <div class="timeline__content page3" data-end-year="1893" slot="timeline__content">
+  <div class="timeline__content page3" slot="timeline__content">
     <div class="content">
       <img x-bind:class="{ 'fade-in': inView }" src="Fredfrihetsocialism.png" alt="Description" class="fade-in-image">
       <img x-bind:class="{ 'fade-in': inView }" src="social-1.jpg" alt="Description" class="fade-in-image">

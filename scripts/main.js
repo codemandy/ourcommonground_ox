@@ -5,40 +5,55 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, scrollerSelector) {
+  function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, counterElementId) {
     let cont = { val: startVal };
-    const counterElement = document.getElementById("timeline__years");
-
+    const counterElement = document.getElementById(counterElementId);
+  
     function updateCounter() {
-      counterElement.innerHTML = Math.floor(cont.val);
+      const tolerance = 2; // The range within which to snap to the end value
+      let valToDisplay = Math.floor(cont.val);
+    
+      // If the value is within the tolerance range, snap it to the end value
+      if (Math.abs(valToDisplay - endVal) <= tolerance) {
+        valToDisplay = endVal;
+      }
+    
+      counterElement.innerHTML = valToDisplay;
     }
-
+    
+  
     gsap.to(cont, {
+      val: endVal,
+      roundProps: "val",
+      onUpdate: updateCounter,
       scrollTrigger: {
         trigger: triggerSelectorStart,
         start: "top top",
         endTrigger: triggerSelectorEnd,
-        end: "center center",
-        onLeave: () => {
-          counterElement.style.display = "block";
-          gsap.to(cont, { val: endVal, roundProps: "val", onUpdate: updateCounter, ease: "linear", duration: 0.5 });
+        end: "bottom bottom",
+        onUpdate: self => {
+          if (self.isActive) {
+            counterElement.style.display = "block";
+          } else {
+            counterElement.style.display = "none";
+          }
         },
-        onEnterBack: () => { counterElement.style.display = "none"; },
-        onEnter: () => { counterElement.style.display = "block"; },
-        scrub: 1,
+        onToggle: self => {
+          if (!self.isActive) {
+            cont.val = startVal;  // Reset to startVal when not active
+          }
+        },
+        scrub: true,
         markers: true,
         scroller: "[data-router-wrapper]"
       },
-      val: endVal,
-      roundProps: "val",
-      onUpdate: updateCounter,
       ease: "linear"
     });
   }
+  
 
-  // Initialize counters
-  initCounter('.page2', '.page2', 1800, 1893, '.page2');
-  initCounter('.page2', '.page22', 1893, 1953, '.page22');
-  initCounter('.page22', '.page3', 1853, 1970, '.page3');
-
+  // Initialize counters with the same counterElementId
+  initCounter('.page2', '.page2', 1800, 1893, 'timeline__years');
+  initCounter('.page2', '.page22', 1893, 1953, 'timeline__years');
+  initCounter('.page22', '.page3', 1953, 1970, 'timeline__years');
 });
