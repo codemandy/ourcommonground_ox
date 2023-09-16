@@ -3,6 +3,7 @@ import { gsap } from 'https://cdn.skypack.dev/gsap';
   
   gsap.registerPlugin(ScrollTrigger);
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
   function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, counterElementId) {
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         start: "top top",
         endTrigger: triggerSelectorEnd,
         end: "bottom+=50 bottom",
+
         onUpdate: self => {
           if (self.isActive) {
             counterElement.style.display = "block";
