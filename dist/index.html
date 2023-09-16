@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="generator" content="Astro v2.10.15">
+    <title>Our Common Ground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    
+    
+    
+  
+
+  <link rel="stylesheet" href="/_astro/index.777a8066.css" /><script type="module" src="/_astro/hoisted.db9cb453.js"></script>
+<script type="module" src="/_astro/page.eb952472.js"></script></head>
+  <body>
+    
+  <header id="landing-header" class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-20 text-white opacity-0 transition-opacity duration-500 astro-QCCBMZFI" x-data="{ isVisible: false }" x-init="setTimeout(() => { isVisible = true }, 2000)" x-bind:class="{ 'opacity-100': isVisible }">
+  <div class="flex flex-grow basis-0 astro-QCCBMZFI">
+    <a href="#" class="astro-QCCBMZFI">Our Common Ground</a>
+
+  </div>
+
+  <nav class="hidden xl:block sm:hidden astro-QCCBMZFI">
+    <ul class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 astro-QCCBMZFI">
+    </ul>
+  </nav>
+
+  <nav class="flex flex-grow justify-end basis-0 astro-QCCBMZFI">
+    <ul class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 astro-QCCBMZFI">
+      <li class="astro-QCCBMZFI"><a href="#" class="astro-QCCBMZFI">About</a></li>
+    </ul>
+  </nav>
+</header>
+  <main data-router-wrapper>
+    <div data-router-view="herosection">
+      <section class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center herosection" data-header-color="white" id="herosection">
+  
+  <div class="z-30 relative">
+    <header>
+      
+    </header>
+    <div class="animatedtext">
+      <div x-data="{ 
+        text: '', 
+        fullText: 'In summer 2021, CKC worked with a group of young interns from Malmö, teaching them how to use the tools of performance to express themselves. <br><br> Our Common Ground is a collage - in the same way that each of us is a composite of the different experiences, histories and ideas that shaped us in our youths. So, too, with the communities we come from and the systems we build: they are complex.', 
+        charIndex: 0, 
+        typeSpeed: 50 
+      }" x-init="setInterval(function(){ 
+                  if($data.charIndex < $data.fullText.length) {
+                    $data.text += $data.fullText.charAt($data.charIndex);
+                    $data.charIndex++;
+                  }
+                  document.getElementById('animated-text').innerHTML = $data.text;
+                }, $data.typeSpeed);" id="text-container" class="text-container text-left astro-NLOW4R3U">
+    <h1 id="animated-text" class="main-title astro-NLOW4R3U"></h1>
+  </div>
+    </div>
+    <div class="animatedtext2">
+      
+    </div>
+    <div class="animatedtext3">
+      
+    </div>
+    <div class="animatedtext4">
+      
+    </div>
+
+    <footer class="flex flex-col justify-end pb-20">
+      
+      
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="thebuilding">
+      <section class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center herosection" data-header-color="white" id="thebuilding">
+  
+  <div class="z-30 relative">
+    <header>
+      
+    </header>
+    <div class="animatedtext">
+      
+    </div>
+    <div class="animatedtext2">
+      <div class="astro-ONOBLXDT">
+    <h1 id="animated-text-2" class="main-title-2 astro-ONOBLXDT">The building & history
+    </h1>
+    <!-- <img src="pencil.png" class="pencil" alt="a pencil"> -->
+  </div>
+    </div>
+    <div class="animatedtext3">
+      
+    </div>
+    <div class="animatedtext4">
+      
+    </div>
+
+    <footer class="flex flex-col justify-end pb-20">
+      
+      
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="page2">
+      <section x-data="{ inView: false }" x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }" class="page2 bg-black h-screen w-screen text-center overflow-hidden relative astro-AVWXYGVI">
+  <div slot="animated-text" class="astro-AVWXYGVI">
+    <h1 id="animatedtext" class="main-title astro-AVWXYGVI"></h1>
+    <h1 id="timeline__years client:load" class="main-title astro-AVWXYGVI"></h1>
+  </div>
+  <div class="timeline__content page2 astro-AVWXYGVI" slot="timeline__content">
+    <div class="content astro-AVWXYGVI">
+      <img x-bind:class="{ 'fade-in': inView }" src="folketshus.png" alt="Description" class="fade-in-image astro-AVWXYGVI">
+      <p class="content__text astro-AVWXYGVI">Built in Malmö in 1893, This was Sweden’s first Folkets Hus.
+      </p>
+    </div>
+  </div>
+</section>
+    </div>
+    <div data-router-view="page22">
+      <section x-data="{ inView: false }" x-init="() => {
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+  }, { threshold: 0.1 });
+
+  observer.observe($el);
+}" class="page22 bg-black h-screen w-screen text-center overflow-hidden relative astro-LI6KR7SZ">
+<div slot="animated-text" class="astro-LI6KR7SZ">
+  <h1 id="animatedtext" class="main-title astro-LI6KR7SZ"></h1>
+  <h1 id="timeline__years" class="main-title astro-LI6KR7SZ"></h1>
+</div>
+<div class="timeline__content page22 astro-LI6KR7SZ" slot="timeline__content">
+  <div class="content__img astro-LI6KR7SZ">
+    <img x-bind:class="{ 'fade-in': inView }" src="frank.jpeg" alt="Description" class="fade-in-image astro-LI6KR7SZ">
+    <p class="content__text astro-LI6KR7SZ">On a cold thursday in 1953, Frank Sinitra sang there
+    </p>
+  </div>
+</div>
+</section>
+    </div>
+    <div data-router-view="page3">
+      <section x-data="{ inView: false }" x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }" class="page3 bg-black h-screen w-screen text-center overflow-hidden relative astro-64V3E65A">
+
+  <div slot="animated-text" class="astro-64V3E65A">
+    <h1 id="animatedtext" class="main-title astro-64V3E65A"></h1>
+    <h1 id="timeline__years client:load" class="main-title astro-64V3E65A"></h1>
+  </div>
+  <div class="timeline__content page3 astro-64V3E65A" slot="timeline__content">
+    <div class="content astro-64V3E65A">
+      <img x-bind:class="{ 'fade-in': inView }" src="Fredfrihetsocialism.png" alt="Description" class="fade-in-image astro-64V3E65A">
+      <img x-bind:class="{ 'fade-in': inView }" src="social-1.jpg" alt="Description" class="fade-in-image astro-64V3E65A">
+      <img x-bind:class="{ 'fade-in': inView }" src="social-2.webp" alt="Description" class="fade-in-image astro-64V3E65A">
+    </div>
+    <p class="content__text astro-64V3E65A">The town’s young socialists used to meet there.
+    </p>
+  </div>
+</section>
+    </div>
+    <div data-router-view="page4">
+      <section x-data="{ inView: false }" x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }" class=" bg-black h-screen w-screen text-center overflow-hidden relative astro-LAOPGQMS">
+  <div slot="animated-text" class="astro-LAOPGQMS">
+    <h1 id="animatedtext" class="main-title astro-LAOPGQMS"></h1>
+    <h1 id="timeline__years client:load" class="main-title astro-LAOPGQMS" client:style="display: block;"></h1>
+  </div>
+  <div class="timeline__content page4 astro-LAOPGQMS" data-end-year="1893" slot="timeline__content">
+    <div class="content astro-LAOPGQMS">
+      <img x-bind:class="{ 'fade-in': inView }" src="students-1.png" alt="Description" class="fade-in-image astro-LAOPGQMS">
+      <img x-bind:class="{ 'fade-in': inView }" src="folketshus_2.jpg" alt="Description" class="fade-in-image astro-LAOPGQMS">
+    </div>
+    <p class="content__text astro-LAOPGQMS">It was the perfect setting to talk about the need for young people to claim their space in society.
+    </p>
+  </div>
+</section>
+    </div>
+    <div data-router-view="process">
+      
+
+<astro-particles data-id="tsparticles" data-options="{&#34;background&#34;:{&#34;color&#34;:&#34;#000&#34;},&#34;fullScreen&#34;:{&#34;zIndex&#34;:-1},&#34;particles&#34;:{&#34;number&#34;:{&#34;value&#34;:100},&#34;move&#34;:{&#34;enable&#34;:true},&#34;opacity&#34;:{&#34;value&#34;:0.1},&#34;links&#34;:{&#34;enable&#34;:true,&#34;opacity&#34;:0.5}}}" data-init="particlesInit">
+    <canvas></canvas>
+</astro-particles>
+<section class="h-screen w-screen text-center overflow-hidden relative" data-header-color="white" id="process">
+
+  <div class="z-30 relative h-full flex flex-col">
+    
+    
+    <div class="animatedtext">
+      
+    </div>
+    <div class="animatedtext-2">
+      <div class="astro-FZ4TCLXL">
+    <h1 id="animated-text-2" class="main-title-2 astro-FZ4TCLXL">The Process
+    </h1>
+  </div>
+    </div>
+    
+
+    <footer class="flex flex-col flex-grow justify-end pb-20">
+      
+      <!-- Contidionally load footer: -->
+      
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="process2">
+      <section class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center herosection" data-header-color="white" id="process2">
+  
+  <div class="z-30 relative">
+    <header>
+      
+    </header>
+    <div class="animatedtext">
+      
+    </div>
+    <div class="animatedtext2">
+      
+    </div>
+    <div class="animatedtext3">
+      <div x-data="{ 
+        text: '', 
+        fullText: 'These young “citizen artists” conducted research at the city archives, held interviews in public squares, and—most impressively—they subjected themselves to pages and pages of questions about their own hopes, fears and opinions.', 
+        charIndex: 0, 
+        typeSpeed: 50 
+      }" x-init="setInterval(function(){ 
+                  if($data.charIndex < $data.fullText.length) {
+                    $data.text += $data.fullText.charAt($data.charIndex);
+                    $data.charIndex++;
+                  }
+                  document.getElementById('animated-text3').innerHTML = $data.text;
+                }, $data.typeSpeed);" id="text-container" class="text-container text-left astro-U7SP2NQI">
+    <h1 id="animated-text3" class="main-title astro-U7SP2NQI"></h1>
+  </div>
+    </div>
+    <div class="animatedtext4">
+      
+    </div>
+
+    <footer class="flex flex-col justify-end pb-20">
+      
+      
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="process3">
+      <section class="landing-section bg-black h-screen w-screen text-center overflow-hidden relative flex items-center justify-center herosection" data-header-color="white" id="process3">
+  
+  <div class="z-30 relative">
+    <header>
+      
+    </header>
+    <div class="animatedtext">
+      
+    </div>
+    <div class="animatedtext2">
+      
+    </div>
+    <div class="animatedtext3">
+      
+    </div>
+    <div class="animatedtext4">
+      <div x-data="{ 
+        text: '', 
+        fullText: 'Which resulted in a site-specific performance piece about youth, Malmö and controlling your own story. The culminating performances at Malmös Ungdomens Hus, along with this digital adaptation, reflect a kind of living archive which, like any archive, can never be complete. It can never adequately represent the lives that it documents. In this way, Our Common Ground asserts that in order to understand people’s truths, we must first let them speak for themselves.', 
+        charIndex: 0, 
+        typeSpeed: 50 
+      }" x-init="setInterval(function(){ 
+                  if($data.charIndex < $data.fullText.length) {
+                    $data.text += $data.fullText.charAt($data.charIndex);
+                    $data.charIndex++;
+                  }
+                  document.getElementById('animated-text4').innerHTML = $data.text;
+                }, $data.typeSpeed);" id="text-container" class="text-container text-left astro-KEC62EUJ">
+    <h1 id="animated-text4" class="main-title astro-KEC62EUJ"></h1>
+  </div>
+    </div>
+
+    <footer class="flex flex-col justify-end pb-20">
+      
+      
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="process4">
+      <section x-data="{ inView: false }" x-init="() => {
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+  }, { threshold: 0.1 });
+
+  observer.observe($el);
+}" class="page22 bg-black h-screen w-screen text-center overflow-hidden relative astro-IGGXLAUY">
+
+<div class="timeline__content astro-IGGXLAUY" slot="timeline__content">
+  <div class="content__img astro-IGGXLAUY">
+    <img x-bind:class="{ 'fade-in': inView }" src="OCG_programme.png" alt="Description" class="fade-in-image astro-IGGXLAUY">
+    <p class="content__text astro-IGGXLAUY">OCG Programme</p>
+    
+  </div>
+</div>
+</section>
+    </div>
+    <div data-router-view="process5">
+      <section x-data="{ inView: false }" x-init="() => {
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+  }, { threshold: 0.1 });
+
+  observer.observe($el);
+}" class="page22 bg-black h-screen w-screen text-center overflow-hidden relative astro-OOVMJCUJ">
+
+<div class="timeline__content astro-OOVMJCUJ" slot="timeline__content">
+  <div class="content__img astro-OOVMJCUJ">
+    <img x-bind:class="{ 'fade-in': inView }" src="bg-1.webp" alt="Description" class="fade-in-image astro-OOVMJCUJ">
+    <p class="content__text astro-OOVMJCUJ">2022 Södra Communityteatern</p>
+    
+  </div>
+</div>
+</section>
+    </div>
+    <div data-router-view="page5">
+      <section x-data="{ inView: false }" x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { inView = true }, 900);
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }" class="bg-black h-screen w-screen text-center overflow-hidden relative" data-header-color="white" id="page5">
+  <div class="z-30 relative h-full flex flex-col">
+    <header>
+      <h2 class="text-white pt-40 text-[40px] font-medium"></h2>
+      <p class="text-white text-sm"></p>
+    </header>
+    
+    <div x-bind:class="{
+        'grid-cols-3 place-items-center': inView, 
+        'grid-cols-1 place-items-center': !inView
+      }" class="images-grid grid h-full gap-4 transition-all ease-in-out duration-1500">
+      <img src="Glasses2.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG"><img src="HandfreePouch.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG"><img src="PaperClips.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG"><img src="Notebook-2.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG"><img src="Colacan.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG"><img src="Watch-2.png" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" class="astro-WBWIU4DG">
+    </div>
+
+    <footer class="flex flex-col flex-grow justify-end pb-20">
+    </footer>
+  </div>
+</section>
+    </div>
+    <div data-router-view="page6">
+      <section x-data="{ inView: false }" x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { inView = true }, 900);
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }" class="bg-black h-screen w-screen text-center overflow-hidden relative" data-header-color="white" id="page6">
+  <div class="z-30 relative h-full flex flex-col">
+    <header>
+      <h2 class="text-white pt-40 text-[40px] font-medium">ABOUT</h2>
+      <p class="text-white text-sm"></p>
+    </header>
+    
+    <div x-bind:class="{
+        'grid-cols-3 place-items-center': inView, 
+        'grid-cols-1 place-items-center': !inView
+      }" class="images-grid grid h-full gap-4 transition-all ease-in-out duration-1500">
+      
+    </div>
+
+    <footer class="flex flex-col flex-grow justify-end pb-20">
+    </footer>
+  </div>
+</section>
+    </div>
+  </main>
+
+<script type="module" src="/scripts/main.js"></script>
+
+  </body>
+</html>
