@@ -1,7 +1,8 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from 'https://cdn.skypack.dev/gsap';
+  import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -30,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
         trigger: triggerSelectorStart,
         start: "top top",
         endTrigger: triggerSelectorEnd,
-        end: "bottom bottom",
+        end: "bottom+=50 bottom",
+
         onUpdate: self => {
           if (self.isActive) {
             counterElement.style.display = "block";
