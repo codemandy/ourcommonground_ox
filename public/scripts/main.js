@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         },
         scrub: true,
-        markers: true,
+        markers: false,
         scroller: "[data-router-wrapper]"
       },
       ease: "none"
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top top",
       end: "bottom bottom",
       scrub: true,
-      markers: true,
+      markers: false,
       scroller: "[data-router-wrapper]",
     }
   })

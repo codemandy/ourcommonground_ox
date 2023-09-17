@@ -1,0 +1,66 @@
+---
+import Section from "./Section-landing.astro"
+---
+
+<Section id="introduction1" color="white">
+  <div x-data="{ 
+        text: '', 
+        fullText: 'The performance would take place in Malmös Ungdomens Hus, formerly known as Folkets Hus. We asked ourselves about the history of this building, in terms of understanding the youth, then, and the youth now.', 
+        charIndex: 0, 
+        typeSpeed: 45,
+        intervalId: null,
+        observer: null
+      }" 
+      x-init="observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                      intervalId = setInterval(function(){ 
+                        if($data.charIndex < $data.fullText.length) {
+                          $data.text += $data.fullText.charAt($data.charIndex);
+                          $data.charIndex++;
+                        }
+                        document.getElementById('animated-text1').innerHTML = $data.text;
+                      }, $data.typeSpeed);
+                    } else {
+                      clearInterval(intervalId);
+                      $data.text = '';
+                      $data.charIndex = 0;
+                    }
+                  });
+                }, { threshold: 1 });
+                observer.observe($el);"
+      id="text-container"
+      class="text-container text-left flex flex-col items-start" 
+      slot="animated-text1">
+    <h1 id="animated-text1" class="main-title mb-4"></h1>
+    <!-- <div class="flex space-x-4"> 
+      <svg width="120" height="120">
+        <circle cx="60" cy="60" r="55" stroke="black" stroke-width="3" fill="white" />
+        <text x="60" y="60" font-family="Verdana" font-size="7" text-anchor="middle" dy=".3em">We did workshops</text>
+      </svg>
+      <svg width="120" height="120">
+        <circle cx="60" cy="60" r="55" stroke="black" stroke-width="3" fill="white" />
+        <text x="60" y="60" font-family="Verdana" font-size="7" text-anchor="middle" dy=".3em">We interviewd people about their youth</text>
+      </svg>
+      <svg width="80" height="80">
+        <circle cx="40" cy="40" r="30" stroke="black" stroke-width="3" fill="white" />
+        <text x="40" y="40" font-family="Verdana" font-size="7" text-anchor="middle" dy=".3em">We interviewed people about their youth</text>
+      </svg>
+    </div> -->
+  </div>
+</Section>
+
+<style>
+  .main-title {
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+  }
+  #animated-text1 {
+    width: 500px;
+  }
+</style>
