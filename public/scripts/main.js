@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
   function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, counterElementId) {
@@ -22,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         trigger: triggerSelectorStart,
         start: "top top",
         endTrigger: triggerSelectorEnd,
+
         end: "bottom bottom",
         
+
         onUpdate: self => {
           if (self.progress > 0.95) {
             cont.val = endVal;
