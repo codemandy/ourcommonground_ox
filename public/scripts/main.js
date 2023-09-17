@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         counterElement.style.display = "none";
       }
     },
-    markers: true,
+    markers: false,
     scroller: "[data-router-wrapper]"
   });
 
