@@ -1,28 +1,20 @@
 import { gsap } from 'https://cdn.skypack.dev/gsap';
-  import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
-  
-  gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function () {
 
   function initCounter(triggerSelectorStart, triggerSelectorEnd, startVal, endVal, counterElementId) {
     let cont = { val: startVal };
     const counterElement = document.getElementById(counterElementId);
-  
+    
     function updateCounter() {
-      const tolerance = 2; // The range within which to snap to the end value
       let valToDisplay = Math.floor(cont.val);
-    
-      // If the value is within the tolerance range, snap it to the end value
-      if (Math.abs(valToDisplay - endVal) <= tolerance) {
-        valToDisplay = endVal;
-      }
-    
       counterElement.innerHTML = valToDisplay;
     }
-    
   
-    gsap.to(cont, {
+    return gsap.to(cont, {
       val: endVal,
       roundProps: "val",
       onUpdate: updateCounter,
@@ -30,30 +22,61 @@ document.addEventListener("DOMContentLoaded", function () {
         trigger: triggerSelectorStart,
         start: "top top",
         endTrigger: triggerSelectorEnd,
-        end: "bottom+=50 bottom",
+        end: "bottom bottom",
+        
         onUpdate: self => {
+          if (self.progress > 0.95) {
+            cont.val = endVal;
+            updateCounter();
+          }
           if (self.isActive) {
             counterElement.style.display = "block";
           } else {
             counterElement.style.display = "none";
           }
         },
-        onToggle: self => {
-          if (!self.isActive) {
-            cont.val = startVal;  // Reset to startVal when not active
-          }
-        },
         scrub: true,
         markers: true,
         scroller: "[data-router-wrapper]"
       },
-      ease: "linear"
+      ease: "none"
     });
   }
-  
 
-  // Initialize counters with the same counterElementId
-  initCounter('.page2', '.page2', 1800, 1893, 'timeline__years');
-  initCounter('.page2', '.page22', 1893, 1953, 'timeline__years');
-  initCounter('.page22', '.page3', 1953, 1970, 'timeline__years');
+  // Initially hide the counter
+  const counterElement = document.getElementById('timeline__years');
+  counterElement.style.display = "none";
+
+  // ScrollTrigger for page2
+  ScrollTrigger.create({
+    trigger: '.page2',
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: self => {
+      if (self.isActive) {
+        counterElement.style.display = "block";
+        counterElement.innerHTML = 1893;
+      } else {
+        counterElement.style.display = "none";
+      }
+    },
+    markers: true,
+    scroller: "[data-router-wrapper]"
+  });
+
+  const anim2 = initCounter('.page2', '.page22', 1893, 1953, 'timeline__years');
+  const anim3 = initCounter('.page22', '.page3', 1953, 1970, 'timeline__years');
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '.page2',
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+      markers: true,
+      scroller: "[data-router-wrapper]",
+    }
+  })
+  .add(anim2)
+  .add(anim3);
 });
