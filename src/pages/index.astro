@@ -1,5 +1,6 @@
 ---
 import HeroSection from "../components/HeroSection.astro";
+import Introduction1 from "../components/introduction1.astro";
 import Thebuilding from "../components/thebuilding.astro";
 import LandingHeader from "../components/LandingHeader.astro";
 import Page3 from "../components/Page3.astro";
@@ -21,6 +22,9 @@ import Process5 from "../components/Process5.astro";
   <main data-router-wrapper>
     <div data-router-view="herosection">
       <HeroSection id="herosection" />
+    </div>
+    <div data-router-view="introduction1">
+      <Introduction1 id="introduction1" />
     </div>
     <div data-router-view="thebuilding">
       <Thebuilding id="thebuilding" />

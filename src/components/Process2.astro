@@ -7,41 +7,47 @@ import Section from "./Section-landing.astro"
         text: '', 
         fullText: 'These young “citizen artists” conducted research at the city archives, held interviews in public squares, and—most impressively—they subjected themselves to pages and pages of questions about their own hopes, fears and opinions.', 
         charIndex: 0, 
-        typeSpeed: 50 
-      }"
-       x-init="setInterval(function(){ 
-                  if($data.charIndex < $data.fullText.length) {
-                    $data.text += $data.fullText.charAt($data.charIndex);
-                    $data.charIndex++;
-                  }
-                  document.getElementById('animated-text3').innerHTML = $data.text;
-                }, $data.typeSpeed);"
-       id="text-container"
-       class="text-container text-left"
-       slot="animated-text3">
+        typeSpeed: 45,
+        intervalId: null,
+        observer: null
+      }" 
+      x-init="observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                      intervalId = setInterval(function(){ 
+                        if($data.charIndex < $data.fullText.length) {
+                          $data.text += $data.fullText.charAt($data.charIndex);
+                          $data.charIndex++;
+                        }
+                        document.getElementById('animated-text3').innerHTML = $data.text;
+                      }, $data.typeSpeed);
+                    } else {
+                      clearInterval(intervalId);
+                      $data.text = '';
+                      $data.charIndex = 0;
+                    }
+                  });
+                }, { threshold: 1 });
+                observer.observe($el);"
+      id="text-container"
+      class="text-container text-left"
+      slot="animated-text3">
     <h1 id="animated-text3" class="main-title"></h1>
   </div>
 </Section>
 
-
-
-
 <style>
-
   .main-title {
-  font-size: 1rem;
-  color: rgb(255, 255, 255);
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -75%);
-}
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+  }
 
-#animated-text3 {
-  width: 700px;
-  
-}
-
-
+  #animated-text3 {
+    width: 700px;
+  }
 </style>

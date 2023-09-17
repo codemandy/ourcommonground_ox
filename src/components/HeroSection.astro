@@ -7,45 +7,51 @@ import Section from "./Section-landing.astro"
         text: '', 
         fullText: 'In summer 2021, CKC worked with a group of young interns from Malmö, teaching them how to use the tools of performance to express themselves. <br><br> Our Common Ground is a collage - in the same way that each of us is a composite of the different experiences, histories and ideas that shaped us in our youths. So, too, with the communities we come from and the systems we build: they are complex.', 
         charIndex: 0, 
-        typeSpeed: 50 
-      }"
-       x-init="setInterval(function(){ 
-                  if($data.charIndex < $data.fullText.length) {
-                    $data.text += $data.fullText.charAt($data.charIndex);
-                    $data.charIndex++;
-                  }
-                  document.getElementById('animated-text').innerHTML = $data.text;
-                }, $data.typeSpeed);"
-       id="text-container"
-       class="text-container text-left"
-       slot="animated-text">
+        typeSpeed: 45,
+        intervalId: null,
+        observer: null
+      }" 
+      x-init="observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                      intervalId = setInterval(function(){ 
+                        if($data.charIndex < $data.fullText.length) {
+                          $data.text += $data.fullText.charAt($data.charIndex);
+                          $data.charIndex++;
+                        }
+                        document.getElementById('animated-text').innerHTML = $data.text;
+                      }, $data.typeSpeed);
+                    } else {
+                      clearInterval(intervalId);
+                      $data.text = '';
+                      $data.charIndex = 0;
+                    }
+                  });
+                }, { threshold: 1 });
+                observer.observe($el);"
+      id="text-container"
+      class="text-container text-left"
+      slot="animated-text">
     <h1 id="animated-text" class="main-title"></h1>
   </div>
 </Section>
 
-
-
-
 <style>
-
   .herosection {
-    position: relative;  /* or you could use absolute depending on your layout needs */
+    position: relative;
   }
 
   .main-title {
-  font-size: 1rem;
-  color: rgb(255, 255, 255);
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -75%);
-}
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+  }
 
-#animated-text {
-  width: 500px;
-  
-}
-
-
+  #animated-text {
+    width: 500px;
+  }
 </style>
