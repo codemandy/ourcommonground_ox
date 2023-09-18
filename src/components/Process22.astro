@@ -1,0 +1,53 @@
+---
+import Section from "./Section-landing.astro"
+---
+
+<Section id="process22" color="white">
+  <div x-data="{ 
+        text: '', 
+        fullText: 'They interviewed people about their youth. Wrote. Rehearsed. And discovered a great deal about our town, our neighbors, our history, and what we’re capable of.', 
+        charIndex: 0, 
+        typeSpeed: 45,
+        intervalId: null,
+        observer: null
+      }" 
+      x-init="observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                      intervalId = setInterval(function(){ 
+                        if($data.charIndex < $data.fullText.length) {
+                          $data.text += $data.fullText.charAt($data.charIndex);
+                          $data.charIndex++;
+                        }
+                        document.getElementById('animated-text5').innerHTML = $data.text;
+                      }, $data.typeSpeed);
+                    } else {
+                      clearInterval(intervalId);
+                      $data.text = '';
+                      $data.charIndex = 0;
+                    }
+                  });
+                }, { threshold: 1 });
+                observer.observe($el);"
+      id="text-container"
+      class="text-container text-left"
+      slot="animated-text5">
+    <h1 id="animated-text5" class="main-title"></h1>
+  </div>
+</Section>
+
+<style>
+  .main-title {
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+  }
+
+  #animated-text5 {
+    width: 700px;
+  }
+</style>
