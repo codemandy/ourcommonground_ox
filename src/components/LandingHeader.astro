@@ -7,10 +7,11 @@
   x-init="setTimeout(() => { isVisible = true }, 2000)"
   x-bind:class="{ 'opacity-100': isVisible }"
 >
-  <div class="flex flex-grow basis-0">
-    <a href="#">Our Common Ground</a>
-
-  </div>
+<nav class="flex flex-grow justify-start basis-0">
+  <ul class="flex text-sm">
+    <li><a href="javascript:void(0);" onclick="window.scrollToSection('herosection')">Our Common Ground</a></li>
+  </ul>
+</nav>
 
   <nav class="hidden xl:block sm:hidden">
     <ul
@@ -23,8 +24,8 @@
     <ul
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
-      <li><a href="#">About</a></li>
-    </ul>
+    <li><a href="javascript:void(0);" onclick="window.scrollToAbout()">About</a></li>
+  </ul>
   </nav>
 </header>
 
@@ -42,3 +43,19 @@
 }
 
 </style>
+
+<script>
+  window.scrollToSection = function(sectionId) {
+    const element = document.querySelector(`#${sectionId}`);
+    if(element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  window.scrollToAbout = function() {
+    const aboutElement = document.querySelector('[data-router-view="page6"]');
+    if(aboutElement) {
+      aboutElement.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+</script>

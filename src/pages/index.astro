@@ -3,6 +3,7 @@ import HeroSection from "../components/HeroSection.astro";
 import Introduction1 from "../components/introduction1.astro";
 import Thebuilding from "../components/thebuilding.astro";
 import LandingHeader from "../components/LandingHeader.astro";
+import About from "../components/about.astro";
 import Page3 from "../components/Page3.astro";
 import Process from "../components/Process.astro";
 import Page2 from "../components/Page2.astro";
@@ -22,7 +23,7 @@ import Process7 from "../components/Process7.astro";
 
 <Layout title="Our Common Ground">
   <LandingHeader />
-  <main data-router-wrapper>
+  <main data-router-wrapper [data-scroll-section]>
     <div data-router-view="herosection">
       <HeroSection id="herosection" />
     </div>
