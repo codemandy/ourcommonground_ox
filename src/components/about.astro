@@ -24,16 +24,6 @@ const textColor = `text-${color}`;
       <p class={`${textColor} text-sm`}>{subtitle}</p>
     </header>
     
-    <div 
-      x-bind:class="{
-        'grid-cols-3 place-items-center': inView, 
-        'grid-cols-1 place-items-center': !inView
-      }"
-      class="images-grid grid h-full gap-4 transition-all ease-in-out duration-1500"
-    >
-      <slot name="images"></slot>
-    </div>
-    
     <slot name="credits"></slot>
 
     <slot name="logos"></slot>

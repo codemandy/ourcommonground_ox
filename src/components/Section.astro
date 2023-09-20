@@ -4,11 +4,10 @@ const textColor = `text-${color}`;
 import FooterMenu from './FooterMenu.astro';
 ---
 <section
-  class="h-screen w-screen text-center overflow-hidden relative"
+  class="bg-black h-screen w-screen text-center overflow-hidden relative"
   data-header-color={color}
   id={id}
 >
-<slot name="particles"></slot>
   <div class="z-30 relative h-full flex flex-col">
     <slot name="content"></slot>
     
@@ -19,6 +18,7 @@ import FooterMenu from './FooterMenu.astro';
       <slot name="animated-text-2"></slot>
     </div>
     <slot name="timeline__content"></slot>
+    <slot name="about"></slot>
 
     <footer class="flex flex-col flex-grow justify-end pb-20">
       <slot name="footer" />

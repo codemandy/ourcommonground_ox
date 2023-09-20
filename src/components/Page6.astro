@@ -1,18 +1,104 @@
 ---
-import Section from "./SectionImages.astro";
+import Section from "./about.astro";
 ---
 
 <Section
-  title="ABOUT"
+  id="page6"
+  title="About"
   subtitle=""
   color="white"
-  id="page6"
 >
- 
+
+<div slot="credits" class="credits">
+  <p>Medverkande
+    Skapad och framförd av:
+    <br>
+    <br>
+    June Baretta, Jonas Jarl, Selma Laouar, Sara Mededovic, Aaron Rada, Moa Strömberg, Loan Voung, Zahraa Hamed och Junior Mukonde
+    <br>
+    <br>
+    Regissör: A.Z. Kelsey
+    <br>
+    Regiassistent: Ida Knutsson
+    <br>
+    Ljusdesign och video: Adrian Kautsky
+    <br>
+    Ljuddesign: Mattias Alheim
+    <br>
+    Koreografi: Khamlane Halsackda
+    <br>
+    Digitalisering: Rebecka Sjöström
+    <br>
+    Reserachmentor: Linus Sollin, Malmö stadsarkiv
+    <br>
+    Teknisk assistens: Roozbeh Emad
+    <br>
+    Affisch: Sarah Amili
+    <br>
+    Produktionsassistenter: Zahraa Hamed, Josef Fakhro, Meilina Chau, Fiona Sun, Sumeja Lukovic och Hadeel Nemboud
+    <br>
+    Publikvärdar: Ayaan Ali, Adna Omar, Khouder Daoud, Aymane Hayati och Emilia Ahlberg
+    <br><br>    
+    Ett stort tack till Ungdomens Hus, Malmö Kulturförvaltningen, ABF Malmö, Bombina Bombast, Potato Potato och Bastionen!</p>
+</div>
+  <div slot="logos" class="img-grid absolute bottom-0">
+    <a href="https://www.arvsfonden.se/" target="_blank" rel="noopener noreferrer">
+      <img src="allmanna-arvsfonden-1.png" alt="Logo 1" class="logo-item">
+    </a>
+    <a href="https://www.communityartlabsweden.se/produktion/our-common-ground/" target="_blank" rel="noopener noreferrer">
+      <img src="cals-logo.png" alt="cals logo" class="logo-item">
+    </a>
+    
+    <p class="logo-item text-logo"> <span style="font-size: 9px;"><a href="http://www.oxoy-studio.com" target="_blank" rel="noopener">website by ox-oy studio</a></span>
+    </p>
+  </div>
+
 </Section>
 
 <style>
-  .img-grid {
-    width: 50%;
+ .img-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 10px; /* Gap between items */
+  justify-items: center; /* Horizontal alignment */
+  align-items: center; /* Vertical alignment */
+  justify-content: center; /* Horizontally centers the entire grid */
+  width: 100%;
+  margin-bottom: 40px;
+}
+.img-grid a {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+
+.logo-item {
+  position: relative;
+  width: 25%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+  .text-logo {
+    font-size: 9px;
+    text-align: center;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    z-index: 1;
+    white-space: nowrap
   }
+
+  .credits {
+  font-size: 11px;
+  text-align: center; /* Aligns the text to the center */
+  width: 20%;
+  margin: 0 auto; /* Centers the block element */
+  color: white;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  line-height: 1.8 ;
+}
+
 </style>

@@ -47,6 +47,12 @@ import Section from "./Section-landing.astro"
     transform: translate(0, 0);
   }
   #animated-text1 {
-    width: 500px;
+  width: 200px;  /* Default width for mobile devices */
+}
+
+@media (min-width: 768px) {
+  #animated-text1 {
+    width: 500px;  /* Width for screens larger than 768px */
   }
+}
 </style>

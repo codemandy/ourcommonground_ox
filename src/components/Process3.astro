@@ -48,6 +48,12 @@ import Section from "./Section-landing.astro"
   }
 
   #animated-text4 {
-    width: 700px;
+  width: 200px;  /* Default width for mobile devices */
+}
+
+@media (min-width: 768px) {
+  #animated-text4 {
+    width: 500px;  /* Width for screens larger than 768px */
   }
+}
 </style>
