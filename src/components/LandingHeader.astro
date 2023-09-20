@@ -9,7 +9,7 @@
 >
 <nav class="flex flex-grow justify-start basis-0">
   <ul class="flex text-sm">
-    <li><a href="javascript:void(0);" onclick="window.scrollToSection('herosection')">Our Common Ground</a></li>
+    <li><a href="javascript:void(0);" onclick="window.scrollToSection('Home')">Our Common Ground</a></li>
   </ul>
 </nav>
 
@@ -53,7 +53,7 @@
   }
 
   window.scrollToAbout = function() {
-    const aboutElement = document.querySelector('[data-router-view="page6"]');
+    const aboutElement = document.querySelector('[data-router-view="about"]');
     if(aboutElement) {
       aboutElement.scrollIntoView({ behavior: "smooth" });
     }
