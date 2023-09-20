@@ -1,9 +1,8 @@
 ---
-import HeroSection from "../components/HeroSection.astro";
+import Home from "../components/Home.astro";
 import Introduction1 from "../components/introduction1.astro";
 import Thebuilding from "../components/thebuilding.astro";
 import LandingHeader from "../components/LandingHeader.astro";
-import About from "../components/about.astro";
 import Page3 from "../components/Page3.astro";
 import Process from "../components/Process.astro";
 import Page2 from "../components/Page2.astro";
@@ -11,7 +10,7 @@ import Page22 from "../components/Page22.astro";
 import Page5 from "../components/Page5.astro";
 import Layout from "../layouts/Layout.astro";
 import Page4 from "../components/Page4.astro";
-import Page6 from "../components/Page6.astro";
+import About from "../components/AboutSectionOne.astro";
 import Process2 from "../components/Process2.astro";
 import Process22 from "../components/Process22.astro";
 import Process3 from "../components/Process3.astro";
@@ -19,13 +18,14 @@ import Process4 from "../components/Process4.astro";
 import Process5 from "../components/Process5.astro";
 import Process6 from "../components/Process6.astro";
 import Process7 from "../components/Process7.astro";
+import Page6 from "../components/Page6.astro";
 ---
 
 <Layout title="Our Common Ground">
   <LandingHeader />
-  <main data-router-wrapper [data-scroll-section]>
-    <div data-router-view="herosection">
-      <HeroSection id="herosection" />
+  <main data-router-wrapper>
+    <div data-router-view="home">
+      <Home id="home" />
     </div>
     <div data-router-view="introduction1">
       <Introduction1 id="introduction1" />
