@@ -3,9 +3,9 @@ import Section from "./Section-landing.astro"
 ---
 
 <Section id="Home" color="white">
-  <div x-data="{ 
+  <div x-data="{
         text: '', 
-        fullText: 'In summer 2021, CKC worked with a group of young interns from Malmö, teaching them how to use the tools of performance to express themselves. <br><br> Our Common Ground is a collage - in the same way that each of us is a composite of the different experiences, histories and ideas that shaped us in our youths. So, too, with the communities we come from and the systems we build: they are complex.', 
+        fullText: `I sommaren 2021 samarbetade CommunityKulturCentrum med en grupp unga praktikanter från Malmö och lärde dem hur man använder performanceverktygen för att uttrycka sig. Resultatet blev en teatralisk kollage kallad 'Vårt gemensamma territorium' som vävde samman de personliga historierna hos projektets deltagare med historien som finns inbäddad i marken under deras fötter.`, 
         charIndex: 0, 
         typeSpeed: 45,
         intervalId: null,
@@ -15,16 +15,16 @@ import Section from "./Section-landing.astro"
                   entries.forEach(entry => {
                     if(entry.isIntersecting) {
                       intervalId = setInterval(function(){ 
-                        if($data.charIndex < $data.fullText.length) {
-                          $data.text += $data.fullText.charAt($data.charIndex);
-                          $data.charIndex++;
+                        if(charIndex < fullText.length) {
+                          text += fullText.charAt(charIndex);
+                          charIndex++;
                         }
-                        document.getElementById('animated-text').innerHTML = $data.text;
-                      }, $data.typeSpeed);
+                        document.getElementById('animated-text').innerHTML = text;
+                      }, typeSpeed);
                     } else {
                       clearInterval(intervalId);
-                      $data.text = '';
-                      $data.charIndex = 0;
+                      text = '';
+                      charIndex = 0;
                     }
                   });
                 }, { threshold: 1 });
@@ -35,6 +35,9 @@ import Section from "./Section-landing.astro"
     <h1 id="animated-text" class="main-title"></h1>
   </div>
 </Section>
+
+
+
 
 <style>
   .home {

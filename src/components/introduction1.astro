@@ -5,7 +5,7 @@ import Section from "./Section-landing.astro"
 <Section id="introduction1" color="white">
   <div x-data="{ 
         text: '', 
-        fullText: 'The performance would take place in Malmös Ungdomens Hus, formerly known as Folkets Hus. We asked ourselves about the history of this building, in terms of understanding the youth, then, and the youth now.', 
+        fullText: 'Föreställningen ägde rum i Malmös Ungdomens Hus, tidigare känt som Folkets Hus, vilket inspirerade gruppen att utforska byggnadens historia som ett sätt att förstå ungdomens natur genom tiderna.', 
         charIndex: 0, 
         typeSpeed: 45,
         intervalId: null,
@@ -15,16 +15,16 @@ import Section from "./Section-landing.astro"
                   entries.forEach(entry => {
                     if(entry.isIntersecting) {
                       intervalId = setInterval(function(){ 
-                        if($data.charIndex < $data.fullText.length) {
-                          $data.text += $data.fullText.charAt($data.charIndex);
-                          $data.charIndex++;
+                        if(charIndex < fullText.length) {
+                          text += fullText.charAt(charIndex);
+                          charIndex++;
                         }
-                        document.getElementById('animated-text1').innerHTML = $data.text;
-                      }, $data.typeSpeed);
+                        document.getElementById('animated-text1').innerHTML = text;
+                      }, typeSpeed);
                     } else {
                       clearInterval(intervalId);
-                      $data.text = '';
-                      $data.charIndex = 0;
+                      text = '';
+                      charIndex = 0;
                     }
                   });
                 }, { threshold: 1 });
@@ -35,6 +35,7 @@ import Section from "./Section-landing.astro"
     <h1 id="animated-text1" class="main-title mb-4"></h1>
   </div>
 </Section>
+
 
 <style>
   .main-title {
