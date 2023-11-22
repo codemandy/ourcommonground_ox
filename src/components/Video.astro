@@ -1,0 +1,90 @@
+---
+import Section from "./Section.astro";
+---
+
+<section
+  x-data="{ inView: false }"
+  x-init="() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe($el);
+  }"
+  class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
+>
+
+  <div class="timeline__content" slot="timeline__content">
+    <div class="content__img">
+      <div class="video-container">
+        <iframe 
+          src="https://player.vimeo.com/video/792929104" 
+          width="640" 
+          height="360" 
+          allow="autoplay; fullscreen; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+
+.timeline__content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  /* Add this line */
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.content__img {
+  width: 60%;
+}
+
+  .content__text {
+    font: 1rem;
+    padding-top: 1rem;
+    color: rgb(255, 255, 255);
+  }
+
+  .main-title {
+    font-size: 7rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    z-index: 51;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .fade-in-image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    margin-top: 2rem; /* Adjust as needed */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  </style>
