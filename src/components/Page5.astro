@@ -9,19 +9,30 @@ import Section from "./SectionImages.astro";
   </div>
 
   <div class="image-container" slot="images">
-    <img src="HandfreePouch.png" id="Headphones" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Headphones</div>
-  </div>
+    <img src="HandfreePouch.png" id="headphones" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+        <audio controls>
+            <source src="Audio/collage1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
 
-  <div class="image-container" slot="images">
-    <img src="PaperClips.png" id="Paperclips" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Paperclips</div>
+<div class="image-container" slot="images">
+  <img src="PaperClips.png" id="PaperClips" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/policereports.pdf" style="width:400px; height:550px;"></iframe>
   </div>
+</div>
 
-  <div class="image-container" slot="images">
-    <img src="Notebook-2.png" id="Notebook" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Notebook</div>
+
+<div class="image-container" slot="images">
+  <img src="Notebook-2.png" id="Notebook-2" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/lists.pdf" style="width:400px; height:550px;"></iframe>
   </div>
+</div>
+
 
   <div class="image-container" slot="images">
     <img src="Colacan.png" id="Cola" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
