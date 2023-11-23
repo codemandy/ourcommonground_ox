@@ -2,27 +2,126 @@
 import Section from "./SectionImages.astro";
 ---
 
-<Section
-  title=""
-  subtitle=""
-  color="white"
-  id="page5"
->
-  <img src="Glasses2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="HandfreePouch.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="PaperClips.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Notebook-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Colacan.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Watch-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+<Section title="" subtitle="" color="white" id="page5">
+  <div class="image-container" slot="images">
+    <img src="Glasses2.png" id="Glasses" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Glasses</div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="HandfreePouch.png" id="Headphones" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Headphones</div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="PaperClips.png" id="Paperclips" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Paperclips</div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="Notebook-2.png" id="Notebook" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Notebook</div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="Colacan.png" id="Cola" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Cola</div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="Watch-2.png" id="Watch" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Watch</div>
+  </div>
+</Section>
+
+   <!-- Popup div -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <div id="popupBody"><!-- Dynamic content will go here --></div>
+    <button id="closePopup">Close</button>
+  </div>
+</div>
+
 </Section>
 
 <style>
-  .img-small {
-    width: 10%;
-    transition: width 0.9s ease;
+  .image-container {
+    position: relative;
+    width: 30%; /* Adjust this as needed */
   }
-  .img-large {
-    width: 40%;
-    transition: width 0.9s ease;
+
+  .image-container img {
+    width: 100%;
+    transition: opacity 0.9s ease;
   }
+
+  .hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Matches the width of the image */
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+
+  .image-container:hover .hover-content {
+    opacity: 1;
+  }
+
+  .img-small, .img-large {
+    /* No width adjustments here, control size through .image-container */
+  }
+
+  .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  /* Add more styles as needed */
+}
+
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const popupContents = {
+    "Glasses": "Content specific to Glasses",
+    "Headphones": "Content specific to Headphones",
+    "Paperclips": "Content specific to Paperclips",
+    "Notebook": "Content specific to Notebook",
+    "Cola": "Content specific to Cola",
+    "Watch": "Content specific to Watch"
+  };
+
+  document.querySelectorAll('.hover-content').forEach(item => {
+    item.addEventListener('click', () => {
+      const imgId = item.previousElementSibling.id; // Get the ID of the image
+      const contentToShow = popupContents[imgId]; // Fetch the corresponding content
+
+      document.getElementById('popupBody').innerHTML = contentToShow; // Set the content
+      document.getElementById('popup').style.display = 'flex'; // Show the popup
+    });
+  });
+
+  document.getElementById('closePopup').addEventListener('click', () => {
+    document.getElementById('popup').style.display = 'none'; // Hide the popup
+  });
+});
+</script>
