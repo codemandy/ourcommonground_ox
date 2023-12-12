@@ -17,12 +17,33 @@ const { title } = Astro.props
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
-    <link href="src/css/lightbox.css" "is:inline" rel="stylesheet"/>
 
     <style is:global>
     body {
       font-family: 'Montserrat', sans-serif;
     }
+
+    #animated-text, #animated-text1, #animated-text2, #animated-text3, #animated-text4, #animated-text5 {
+    font-size: 9px; /* Default size for small screens */
+    font-weight: 500;
+    width: 200px;  /* Default width for mobile devices */
+  }
+
+  @media (min-width: 768px) { /* Assuming 768px is 'md' breakpoint */
+  #animated-text, #animated-text1, #animated-text2, #animated-text-3, #animated-text4, #animated-text5 {
+ 
+      font-size: 10px; /* Proportionally larger for medium screens */
+      width: 400px;  /* Width for screens larger than 768px */
+
+    }
+  }
+
+  @media (min-width: 1024px) { /* Assuming 1024px is 'lg' breakpoint */
+  #animated-text, #animated-text1, #animated-text2, #animated-text3, #animated-text4, #animated-text5 {
+ 
+      font-size: calc(13px); /* Starting at 13px and scaling up on large screens */
+    }
+  }
 
     main {
     scroll-snap-type: y mandatory;
