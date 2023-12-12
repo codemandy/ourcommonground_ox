@@ -19,7 +19,7 @@
   </div>
   <div class="timeline__content page2" slot="timeline__content">
     <div class="content">
-      <img x-bind:class="{ 'fade-in': inView }" src="folketshus.png" alt="Description" class="fade-in-image">
+      <img x-bind:class="{ 'fade-in': inView }" src="folketshus_2.jpg" alt="Description" class="fade-in-image">
       <p class="content__text">Byggt i Malmö 1893 var detta Sveriges första Folkets Hus.
 
       </p>
@@ -63,6 +63,12 @@
     .fade-in-image {
     opacity: 0;
     transition: opacity 3.5s ease-in-out;
+    max-width: 80%;
+    margin: 0 auto;
+
+    @media (min-width: 768px) { /* Assuming 768px is 'md' breakpoint */
+    max-width: 50%;
+    }
   }
   
   .fade-in {

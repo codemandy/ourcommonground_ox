@@ -19,7 +19,7 @@ class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
 </div>
 <div class="timeline__content page22" slot="timeline__content">
   <div class="content__img">
-    <img x-bind:class="{ 'fade-in': inView }" src="frank.jpeg" alt="Description" class="fade-in-image">
+    <img x-bind:class="{ 'fade-in': inView }" src="frank-2.jpg" alt="Description" class="fade-in-image">
     <p class="content__text">Frank Sinatra sjöng där en kall natt 1953.
 
     </p>
@@ -61,9 +61,15 @@ class="page22 bg-black h-screen w-screen text-center overflow-hidden relative"
   }
 
   .fade-in-image {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
+    opacity: 0;
+    transition: opacity 3.5s ease-in-out;
+    max-width: 100%;
+    margin: 0 auto;
+    @media (min-width: 768px) { /* Assuming 768px is 'md' breakpoint */
+    max-width: 100%;
+   
+    }
+  }
 
 .fade-in {
   opacity: 1 !important;
