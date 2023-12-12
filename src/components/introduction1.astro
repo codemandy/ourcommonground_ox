@@ -1,13 +1,13 @@
 ---
-import Section from "./Section-landing.astro"
+import Section from "./section-landing-bg-2.astro"
 ---
 
 <Section id="introduction1" color="white">
   <div x-data="{ 
         text: '', 
-        fullText: 'The performance would take place in Malmös Ungdomens Hus, formerly known as Folkets Hus. We asked ourselves about the history of this building, in terms of understanding the youth, then, and the youth now.', 
+        fullText: 'Föreställningen ägde rum i Malmös Ungdomens Hus, tidigare känt som Folkets Hus, vilket inspirerade gruppen att utforska byggnadens historia som ett sätt att förstå ungdomens natur genom tiderna.', 
         charIndex: 0, 
-        typeSpeed: 45,
+        typeSpeed: 30,
         intervalId: null,
         observer: null
       }" 
@@ -15,16 +15,16 @@ import Section from "./Section-landing.astro"
                   entries.forEach(entry => {
                     if(entry.isIntersecting) {
                       intervalId = setInterval(function(){ 
-                        if($data.charIndex < $data.fullText.length) {
-                          $data.text += $data.fullText.charAt($data.charIndex);
-                          $data.charIndex++;
+                        if(charIndex < fullText.length) {
+                          text += fullText.charAt(charIndex);
+                          charIndex++;
                         }
-                        document.getElementById('animated-text1').innerHTML = $data.text;
-                      }, $data.typeSpeed);
+                        document.getElementById('animated-text1').innerHTML = text;
+                      }, typeSpeed);
                     } else {
                       clearInterval(intervalId);
-                      $data.text = '';
-                      $data.charIndex = 0;
+                      text = '';
+                      charIndex = 0;
                     }
                   });
                 }, { threshold: 1 });
@@ -36,23 +36,30 @@ import Section from "./Section-landing.astro"
   </div>
 </Section>
 
+
 <style>
   .main-title {
     font-size: 1rem;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     z-index: 1;
     position: relative;
     top: 0;
     left: 0;
     transform: translate(0, 0);
   }
-  #animated-text1 {
+
+  #animated-text {
   width: 200px;  /* Default width for mobile devices */
+  
+  /* background-color: rgb(171, 168, 168); */
 }
 
 @media (min-width: 768px) {
   #animated-text1 {
     width: 500px;  /* Width for screens larger than 768px */
+    font-size: 13px;
+    font-weight: 500;
   }
 }
+
 </style>

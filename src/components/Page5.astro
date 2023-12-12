@@ -2,27 +2,139 @@
 import Section from "./SectionImages.astro";
 ---
 
-<Section
-  title=""
-  subtitle=""
-  color="white"
-  id="page5"
->
-  <img src="Glasses2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="HandfreePouch.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="PaperClips.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Notebook-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Colacan.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-  <img src="Watch-2.png" slot="images" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+<Section title="" subtitle="" color="white" id="page5">
+  <div class="image-container" slot="images">
+    <img src="Glasses2.png" id="Glasses" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG.jpg" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+
+    </div>
+
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="HandfreePouch.png" id="headphones" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+        <audio controls>
+            <source src="Audio/collage1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+
+<div class="image-container" slot="images">
+  <img src="PaperClips.png" id="PaperClips" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+    <iframe src="pdf/policereports.pdf" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+  </div>
+</div>
+
+
+<div class="image-container" slot="images">
+  <img src="Notebook-2.png" id="Notebook-2" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+  <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+    <iframe src="pdf/lists.pdf" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+  </div>
+</div>
+
+
+
+  <div class="image-container" slot="images">
+    <img src="Watch-2.png" id="Watch" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG2.jpg" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+    </div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="Colacan.png" id="Cola" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG3.png" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+
+    </div>
+  </div>
 </Section>
 
+
 <style>
-  .img-small {
-    width: 10%;
-    transition: width 0.9s ease;
+  .image-container {
+    position: relative;
+    width: 30%; /* Adjust this as needed */
   }
-  .img-large {
-    width: 40%;
-    transition: width 0.9s ease;
+
+  .image-container img {
+    width: 100%;
+    transition: opacity 0.9s ease;
   }
+
+  .hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Matches the width of the image */
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+
+  .image-container:hover .hover-content {
+    opacity: 1;
+  }
+
+  .img-small, .img-large {
+    /* No width adjustments here, control size through .image-container */
+  }
+
+  .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  /* Add more styles as needed */
+}
+
+
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const popupContents = {
+    "Glasses": "Content specific to Glasses",
+    "Headphones": "Content specific to Headphones",
+    "Paperclips": "Content specific to Paperclips",
+    "Notebook": "Content specific to Notebook",
+    "Cola": "Content specific to Cola",
+    "Watch": "Content specific to Watch"
+  };
+
+  document.querySelectorAll('.hover-content').forEach(item => {
+    item.addEventListener('click', () => {
+      const imgId = item.previousElementSibling.id; // Get the ID of the image
+      const contentToShow = popupContents[imgId]; // Fetch the corresponding content
+
+      document.getElementById('popupBody').innerHTML = contentToShow; // Set the content
+      document.getElementById('popup').style.display = 'flex'; // Show the popup
+    });
+  });
+
+  document.getElementById('closePopup').addEventListener('click', () => {
+    document.getElementById('popup').style.display = 'none'; // Hide the popup
+  });
+});
+</script>
