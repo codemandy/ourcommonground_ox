@@ -4,42 +4,14 @@ import Section from "./AboutSectionOne.astro";
 
 <Section
   id="page6"
-  title="About"
+  title=""
   subtitle=""
   color="white"
 >
 
-<div slot="credits" class="credits">
-  <p>Medverkande
-    Skapad och framförd av:
-    <br>
-    <br>
-    June Baretta, Jonas Jarl, Selma Laouar, Sara Mededovic, Aaron Rada, Moa Strömberg, Loan Voung, Zahraa Hamed och Junior Mukonde
-    <br>
-    <br>
-    Regissör: A.Z. Kelsey
-    <br>
-    Regiassistent: Ida Knutsson
-    <br>
-    Ljusdesign och video: Adrian Kautsky
-    <br>
-    Ljuddesign: Mattias Alheim
-    <br>
-    Koreografi: Khamlane Halsackda
-    <br>
-    Digitalisering: Rebecka Sjöström
-    <br>
-    Reserachmentor: Linus Sollin, Malmö stadsarkiv
-    <br>
-    Teknisk assistens: Roozbeh Emad
-    <br>
-    Affisch: Sarah Amili
-    <br>
-    Produktionsassistenter: Zahraa Hamed, Josef Fakhro, Meilina Chau, Fiona Sun, Sumeja Lukovic och Hadeel Nemboud
-    <br>
-    Publikvärdar: Ayaan Ali, Adna Omar, Khouder Daoud, Aymane Hayati och Emilia Ahlberg
-    <br><br>    
-    Ett stort tack till Ungdomens Hus, Malmö Kulturförvaltningen, ABF Malmö, Bombina Bombast, Potato Potato och Bastionen!</p>
+<div slot="content" class="timeline__content">
+  <div class="programme ">  <img src="/OCG_programme.png" alt="">
+  </div>
 </div>
   <div slot="logos" class="img-grid absolute bottom-0">
     <a href="https://www.arvsfonden.se/" target="_blank" rel="noopener noreferrer">
@@ -56,6 +28,22 @@ import Section from "./AboutSectionOne.astro";
 </Section>
 
 <style>
+
+
+.timeline__content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 1;
+  padding-bottom: 1rem;
+
+}
+
+  .programme {
+    width: 50%;
+}
   
  .img-grid {
   display: grid;
@@ -71,6 +59,10 @@ import Section from "./AboutSectionOne.astro";
   display: flex;
   justify-content: center; /* Horizontally center */
   align-items: center; /* Vertically center */
+}
+
+.fade-in-image {
+  height: 100%;
 }
 
 

@@ -7,42 +7,43 @@
   x-init="setTimeout(() => { isVisible = true }, 2000)"
   x-bind:class="{ 'opacity-100': isVisible }"
 >
-<nav class="flex flex-grow justify-start basis-0">
-  <ul class="flex text-sm">
-    <li><a href="javascript:void(0);" onclick="window.scrollToSection('Home')">Our Common Ground</a></li>
-  </ul>
-</nav>
+  <nav class="flex flex-grow justify-start basis-0">
+    <ul class="flex text-sm">
+      <li class="nav-item"><a href="javascript:void(0);" onclick="window.scrollToSection('Home')">Our Common Ground</a></li>
+    </ul>
+  </nav>
 
   <nav class="hidden xl:block sm:hidden">
-    <ul
-      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
-    >
+    <ul class="flex text-sm nav-style">
     </ul>
   </nav>
 
   <nav class="flex flex-grow justify-end basis-0">
-    <ul
-      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
-    >
-    <li><a href="javascript:void(0);" onclick="window.scrollToAbout()">About</a></li>
-  </ul>
+    <ul class="flex text-sm nav-style">
+      <li class="nav-item-2"><a href="javascript:void(0);" onclick="window.scrollToAbout()">About</a></li>
+    </ul>
   </nav>
 </header>
 
 <style>
   .transition-opacity {
-  transition: opacity 0.6s ease-in-out;
-}
+    transition: opacity 0.6s ease-in-out;
+  }
 
-.opacity-0 {
-  opacity: 0;
-}
+  .opacity-0 {
+    opacity: 0;
+  }
 
-.opacity-100 {
-  opacity: 1;
-}
+  .opacity-100 {
+    opacity: 1;
+  }
+
+  .nav-style {
+    /* Shared styles for nav ul */
+  }
 
 </style>
+
 
 <script>
   window.scrollToSection = function(sectionId) {

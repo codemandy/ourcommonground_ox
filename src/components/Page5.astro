@@ -5,7 +5,11 @@ import Section from "./SectionImages.astro";
 <Section title="" subtitle="" color="white" id="page5">
   <div class="image-container" slot="images">
     <img src="Glasses2.png" id="Glasses" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Glasses</div>
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG.jpg" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+
+    </div>
+
   </div>
 
   <div class="image-container" slot="images">
@@ -21,7 +25,7 @@ import Section from "./SectionImages.astro";
 <div class="image-container" slot="images">
   <img src="PaperClips.png" id="PaperClips" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
   <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
-      <iframe src="pdf/policereports.pdf" style="width:400px; height:550px;"></iframe>
+    <iframe src="pdf/policereports.pdf" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
   </div>
 </div>
 
@@ -29,31 +33,28 @@ import Section from "./SectionImages.astro";
 <div class="image-container" slot="images">
   <img src="Notebook-2.png" id="Notebook-2" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
   <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
-      <iframe src="pdf/lists.pdf" style="width:400px; height:550px;"></iframe>
+    <iframe src="pdf/lists.pdf" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
   </div>
 </div>
 
 
-  <div class="image-container" slot="images">
-    <img src="Colacan.png" id="Cola" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Cola</div>
-  </div>
 
   <div class="image-container" slot="images">
     <img src="Watch-2.png" id="Watch" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
-    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">Content for Watch</div>
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG2.jpg" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+    </div>
+  </div>
+
+  <div class="image-container" slot="images">
+    <img src="Colacan.png" id="Cola" class="image" x-bind:class="{ 'img-large': inView, 'img-small': !inView }" />
+    <div class="hover-content" x-bind:class="{ 'img-large': inView, 'img-small': !inView }">
+      <iframe src="pdf/OCG3.png" style="position: absolute; z-index: 99; width: 300px; height: 450px;"></iframe>
+
+    </div>
   </div>
 </Section>
 
-   <!-- Popup div -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <div id="popupBody"><!-- Dynamic content will go here --></div>
-    <button id="closePopup">Close</button>
-  </div>
-</div>
-
-</Section>
 
 <style>
   .image-container {
@@ -107,6 +108,7 @@ import Section from "./SectionImages.astro";
   border-radius: 5px;
   /* Add more styles as needed */
 }
+
 
 </style>
 
