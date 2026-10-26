@@ -9,8 +9,7 @@
     "build": "astro build",
     "build:debug": "astro build --debug",
     "preview": "astro preview",
-    "astro": "astro",
-    "preinstall": "node preinstall.js"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.3.0",
